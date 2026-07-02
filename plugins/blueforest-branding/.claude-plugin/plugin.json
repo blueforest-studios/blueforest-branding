@@ -1,5 +1,6 @@
 {
   "name": "blueforest-branding",
+  "version": "2.0.0",
   "description": "Apply BlueForest Studios brand identity (logo, colors, fonts, icons) to HTML files and web designs",
   "author": {
     "name": "BlueForest Studios",

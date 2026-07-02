@@ -1,53 +1,70 @@
-# BlueForest Branding — Claude Code Plugin
+# BlueForest Branding — Design System & Claude Code Plugin
 
-A Claude Code skill that applies BlueForest Studios brand identity to HTML designs.
+The BlueForest Studios brand identity as a portable design system: a real stylesheet (`tokens.css`) plus a Claude skill that knows how to apply it.
 
-## What it does
+## The design system (works anywhere)
 
-When triggered, this skill instructs Claude to:
-- Apply **BlueForest brand colors** as CSS custom properties
-- Load **Poppins** (Google Fonts substitute for Diavlo) as the brand typeface
-- Embed the **BlueForest Studios logo** in headers and footers
-- Use the **Iconify MCP server** to add professional vector icons throughout designs
-- Apply consistent **buttons, cards, and layout patterns** matching brand guidelines
+The complete brand CSS — tokens, buttons, cards, badges, tables, dark scope — is one stylesheet. Link it from any HTML page or tool:
 
-## Installation
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
+```
 
-### Prerequisites
+Source: [`plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css)
 
-This skill works best with the **Iconify MCP server** installed:
+## The skill
+
+The skill ([`SKILL.md`](plugins/blueforest-branding/skills/blueforest-branding/SKILL.md)) applies the system: register selection (marketing vs technical), logo rules, icon workflow, card variants, and an explicit anti-pattern list. References load on demand:
+
+- `references/marketing-sites.md` — landing/portfolio register (warm, spacious, red = the one CTA)
+- `references/technical-sites.md` — docs/dashboard register (cool, dense, red = errors only)
+- `references/icons.md` — 12 inline Lucide icons for environments without the Iconify MCP
+
+## Install
+
+### Claude Code (plugin)
+
+```bash
+claude plugins add github:ammonehrisman/blueforest-branding
+```
+
+Optional but recommended — the Iconify MCP for icon search:
 
 ```bash
 npm install -g iconify-mcp
 claude mcp add iconify --scope user -- iconify-mcp
 ```
 
-### Install the plugin
+### claude.ai (skill upload)
+
+Zip the skill folder and upload it under Settings → Capabilities → Skills:
 
 ```bash
-claude plugins add github:blueforeststudios/blueforest-branding
+cd plugins/blueforest-branding/skills && zip -r blueforest-branding.zip blueforest-branding
 ```
+
+The skill is self-contained (tokens.css, references, and icon fallbacks travel with it), so it works without any MCP servers.
+
+### Any other tool
+
+Just link `tokens.css` (above) and hand the tool `SKILL.md` as design guidance.
 
 ## Usage
 
-### Slash command
-```
-/blueforest-branding
-```
+Natural language: "brand it", "apply BlueForest branding", "make this match the BFS brand". In Claude Code: `/blueforest-branding`.
 
-### Natural language triggers
-- "Apply BlueForest branding to this page"
-- "Brand it with our BlueForest style"
-- "Make this match the BFS brand"
+## Brand quick reference
 
-## Brand Colors
+Font: **Diavlo** (print) / **Poppins** (web) / **JetBrains Mono** (code).
 
 | Name | Hex | Usage |
 |------|-----|-------|
-| BlueForest Blue | `#009DDC` | Primary brand color, links, headings |
-| Dark | `#231F20` | Body text, dark backgrounds |
+| BlueForest Blue | `#009DDC` | Primary — links, headings, primary buttons |
+| Dark | `#231F20` | Body text, dark sections |
 | Silver | `#B6B8BA` | Borders, muted text |
-| Vibrant Day Lily | `#DB3E26` | Accents, CTAs |
+| Vibrant Day Lily | `#DB3E26` | Marketing: the one CTA · Technical: errors only |
 | French Grey | `#6C7B81` | Secondary text |
 | Toasted Oatmeal | `#EFE6D8` | Warm backgrounds |
-| Icy Waterfall | `#D8E0E4` | Cool backgrounds |
+| Icy Waterfall | `#D8E0E4` | Cool backgrounds, borders |
+
+All values live in `tokens.css` as `--bfs-*` custom properties — never hardcode hex in branded output.

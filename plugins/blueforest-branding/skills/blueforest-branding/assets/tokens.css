@@ -1,0 +1,312 @@
+/* ==========================================================================
+   BlueForest Studios Design Tokens & Components — v2
+   Canonical source: github.com/ammonehrisman/blueforest-branding
+   Link from any tool:
+   https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Brand palette --- */
+  --bfs-blue:   #009DDC;  /* BlueForest Blue — Pantone 299 */
+  --bfs-dark:   #231F20;  /* Process Black */
+  --bfs-white:  #FFFFFF;
+  --bfs-silver: #B6B8BA;  /* Pantone 422 */
+  --bfs-red:    #DB3E26;  /* Vibrant Day Lily — Pantone 1795 */
+  --bfs-grey:   #6C7B81;  /* French Grey — Pantone 7545 */
+  --bfs-cream:  #EFE6D8;  /* Toasted Oatmeal — Pantone 7528 */
+  --bfs-ice:    #D8E0E4;  /* Icy Waterfall — Pantone 9400 */
+
+  /* --- Derived (never hardcode hover/tint hex) --- */
+  --bfs-blue-hover: color-mix(in srgb, var(--bfs-blue) 82%, black);
+  --bfs-red-hover:  color-mix(in srgb, var(--bfs-red) 82%, black);
+  --bfs-blue-tint:  color-mix(in srgb, var(--bfs-blue) 10%, white);
+  --bfs-red-tint:   color-mix(in srgb, var(--bfs-red) 10%, white);
+  --bfs-ice-soft:   color-mix(in srgb, var(--bfs-ice) 45%, white);
+  --bfs-cream-soft: color-mix(in srgb, var(--bfs-cream) 55%, white);
+
+  /* --- Semantic surfaces (components use these, not raw palette) --- */
+  --bfs-bg:         var(--bfs-white);
+  --bfs-text:       var(--bfs-dark);
+  --bfs-text-muted: var(--bfs-grey);
+  --bfs-border:     var(--bfs-ice);
+
+  /* --- Typography --- */
+  --bfs-font:      'Poppins', system-ui, sans-serif;
+  --bfs-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Fluid type scale */
+  --bfs-text-xs:   0.8125rem;
+  --bfs-text-sm:   0.875rem;
+  --bfs-text-base: 1rem;
+  --bfs-text-lg:   clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --bfs-text-xl:   clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --bfs-text-2xl:  clamp(1.5rem, 1.25rem + 1.1vw, 2rem);
+  --bfs-text-3xl:  clamp(1.9rem, 1.45rem + 1.9vw, 2.75rem);
+  --bfs-text-hero: clamp(2.4rem, 1.7rem + 3.2vw, 4rem);
+
+  /* --- Spacing scale (4px base) --- */
+  --bfs-space-1:  0.25rem;
+  --bfs-space-2:  0.5rem;
+  --bfs-space-3:  0.75rem;
+  --bfs-space-4:  1rem;
+  --bfs-space-6:  1.5rem;
+  --bfs-space-8:  2rem;
+  --bfs-space-12: 3rem;
+  --bfs-space-16: 4rem;
+  --bfs-space-24: 6rem;
+  --bfs-space-32: 8rem;
+
+  /* --- Radius --- */
+  --bfs-radius-sm:   8px;
+  --bfs-radius-md:   12px;
+  --bfs-radius-lg:   16px;
+  --bfs-radius-full: 999px;
+
+  /* --- Shadows (always paired with a border on cards) --- */
+  --bfs-shadow-sm: 0 1px 3px rgba(35, 31, 32, 0.06);
+  --bfs-shadow-md: 0 4px 16px rgba(35, 31, 32, 0.07);
+  --bfs-shadow-lg: 0 12px 32px rgba(35, 31, 32, 0.10);
+}
+
+/* Dark scope — apply .bfs-dark to footers, dark heroes, or <body> for a dark page */
+.bfs-dark {
+  color-scheme: dark;
+  --bfs-bg:         var(--bfs-dark);
+  --bfs-text:       var(--bfs-white);
+  --bfs-text-muted: var(--bfs-silver);
+  --bfs-border:     color-mix(in srgb, var(--bfs-white) 14%, transparent);
+  background: var(--bfs-bg);
+  color: var(--bfs-text);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+body {
+  font-family: var(--bfs-font);
+  font-size: var(--bfs-text-base);
+  line-height: 1.6;
+  color: var(--bfs-text);
+  background: var(--bfs-bg);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 var(--bfs-space-4);
+}
+h1 { font-size: var(--bfs-text-3xl); font-weight: 700; }
+h2 { font-size: var(--bfs-text-2xl); font-weight: 650; }
+h3 { font-size: var(--bfs-text-xl);  font-weight: 600; }
+h4 { font-size: var(--bfs-text-lg);  font-weight: 600; }
+
+p { margin: 0 0 var(--bfs-space-4); }
+small, .bfs-caption { font-size: var(--bfs-text-sm); color: var(--bfs-text-muted); }
+
+a { color: var(--bfs-blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--bfs-blue-hover); }
+
+code, pre {
+  font-family: var(--bfs-font-mono);
+  font-size: 0.875em;
+}
+code {
+  background: var(--bfs-ice-soft);
+  border: 1px solid var(--bfs-border);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+}
+pre {
+  background: var(--bfs-dark);
+  color: var(--bfs-ice);
+  border-radius: var(--bfs-radius-md);
+  padding: var(--bfs-space-4) var(--bfs-space-6);
+  overflow-x: auto;
+  line-height: 1.7;
+}
+pre code { background: none; border: none; padding: 0; color: inherit; }
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+
+.bfs-container {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: var(--bfs-space-6);
+}
+
+.bfs-section       { padding-block: var(--bfs-space-24); }
+.bfs-section-tight { padding-block: var(--bfs-space-16); }
+.bfs-section-cream { background: var(--bfs-cream-soft); }
+.bfs-section-ice   { background: var(--bfs-ice-soft); }
+
+.bfs-grid {
+  display: grid;
+  gap: var(--bfs-space-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+
+/* Text + visual side-by-side; stacks on mobile */
+.bfs-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bfs-space-12);
+  align-items: center;
+}
+.bfs-split-60-40 { grid-template-columns: 3fr 2fr; }
+.bfs-split-40-60 { grid-template-columns: 2fr 3fr; }
+@media (max-width: 900px) {
+  .bfs-split, .bfs-split-60-40, .bfs-split-40-60 { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Logo
+   ========================================================================== */
+
+.bfs-logo { max-height: 44px; height: auto; width: auto; display: block; }
+.bfs-logo-hero { max-height: 72px; }
+.bfs-logo-footer { max-height: 36px; }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.bfs-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bfs-space-2);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--bfs-radius-full);
+  font-family: var(--bfs-font);
+  font-weight: 600;
+  font-size: var(--bfs-text-sm);
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.bfs-btn:active { transform: scale(0.98); }
+.bfs-btn svg { width: 1.1em; height: 1.1em; }
+
+.bfs-btn-primary { background: var(--bfs-blue); color: var(--bfs-white); }
+.bfs-btn-primary:hover { background: var(--bfs-blue-hover); color: var(--bfs-white); }
+
+.bfs-btn-secondary { background: transparent; color: var(--bfs-blue); border-color: var(--bfs-blue); }
+.bfs-btn-secondary:hover { background: var(--bfs-blue); color: var(--bfs-white); }
+.bfs-dark .bfs-btn-secondary { color: var(--bfs-white); border-color: var(--bfs-white); }
+.bfs-dark .bfs-btn-secondary:hover { background: var(--bfs-white); color: var(--bfs-dark); }
+
+.bfs-btn-accent { background: var(--bfs-red); color: var(--bfs-white); }
+.bfs-btn-accent:hover { background: var(--bfs-red-hover); color: var(--bfs-white); }
+
+/* ==========================================================================
+   Cards — three variants. NEVER add colored top/left border accents.
+   ========================================================================== */
+
+/* Default: border + soft shadow together, generous padding */
+.bfs-card {
+  background: var(--bfs-white);
+  border: 1px solid var(--bfs-border);
+  border-radius: var(--bfs-radius-lg);
+  padding: var(--bfs-space-8);
+  box-shadow: var(--bfs-shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.bfs-card:hover { box-shadow: var(--bfs-shadow-md); border-color: var(--bfs-silver); }
+
+/* Tinted: quiet, no shadow — use on white sections */
+.bfs-card-tinted {
+  background: var(--bfs-cream-soft);
+  border: none;
+  border-radius: var(--bfs-radius-lg);
+  padding: var(--bfs-space-8);
+  box-shadow: none;
+}
+.bfs-card-tinted.ice { background: var(--bfs-ice-soft); }
+
+/* Feature card: icon chip + title + body (use with .bfs-card or .bfs-card-tinted) */
+.bfs-icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--bfs-radius-md);
+  background: var(--bfs-blue-tint);
+  color: var(--bfs-blue);
+  margin-bottom: var(--bfs-space-4);
+}
+.bfs-icon-chip svg { width: 24px; height: 24px; }
+.bfs-icon-chip.red { background: var(--bfs-red-tint); color: var(--bfs-red); }
+
+/* ==========================================================================
+   Badges — status lives here, never in card borders
+   ========================================================================== */
+
+.bfs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bfs-space-1);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--bfs-radius-full);
+  font-size: var(--bfs-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.bfs-badge svg { width: 0.95em; height: 0.95em; }
+
+.bfs-badge-done    { background: var(--bfs-blue-tint); color: var(--bfs-blue-hover); }
+.bfs-badge-active  { background: var(--bfs-cream); color: var(--bfs-dark); }
+.bfs-badge-pending { background: var(--bfs-ice-soft); color: var(--bfs-grey); border: 1px solid var(--bfs-border); }
+.bfs-badge-error   { background: var(--bfs-red-tint); color: var(--bfs-red-hover); }
+
+/* ==========================================================================
+   Tables (technical pages)
+   ========================================================================== */
+
+.bfs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--bfs-text-sm);
+}
+.bfs-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: var(--bfs-space-3) var(--bfs-space-4);
+  border-bottom: 2px solid var(--bfs-border);
+}
+.bfs-table td {
+  padding: var(--bfs-space-3) var(--bfs-space-4);
+  border-bottom: 1px solid var(--bfs-border);
+}
+.bfs-table tbody tr:nth-child(even) { background: var(--bfs-ice-soft); }
+
+/* ==========================================================================
+   Icons
+   ========================================================================== */
+
+.bfs-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bfs-icon svg { width: 1.25em; height: 1.25em; }
+
+/* ==========================================================================
+   Motion safety
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
