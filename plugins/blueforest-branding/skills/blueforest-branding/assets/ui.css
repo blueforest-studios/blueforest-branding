@@ -1,0 +1,364 @@
+/* ==========================================================================
+   BlueForest Studios UI Components — v3
+   App/product UI layer. Requires tokens.css loaded first.
+   Register: technical — red is errors/danger ONLY; blue is primary action.
+   Link from any tool:
+   https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css
+   ========================================================================== */
+
+/* ==========================================================================
+   Focus — one consistent ring everywhere
+   ========================================================================== */
+
+:where(.bfs-input, .bfs-select, .bfs-textarea, .bfs-btn, .bfs-tab, .bfs-nav-link, .bfs-th-sort button):focus-visible {
+  outline: 2px solid var(--bfs-blue);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+.bfs-field { margin-bottom: var(--bfs-space-6); }
+
+.bfs-label {
+  display: block;
+  font-size: var(--bfs-text-sm);
+  font-weight: 600;
+  margin-bottom: var(--bfs-space-2);
+}
+.bfs-label .bfs-required { color: var(--bfs-red); }
+
+.bfs-hint {
+  display: block;
+  font-size: var(--bfs-text-xs);
+  color: var(--bfs-text-muted);
+  margin-top: var(--bfs-space-1);
+}
+
+.bfs-input,
+.bfs-select,
+.bfs-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--bfs-font);
+  font-size: var(--bfs-text-sm);
+  color: var(--bfs-text);
+  background: var(--bfs-bg);
+  border: 1px solid var(--bfs-silver);
+  border-radius: var(--bfs-radius-sm);
+  padding: 0.625rem 0.875rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.bfs-input:hover, .bfs-select:hover, .bfs-textarea:hover { border-color: var(--bfs-grey); }
+.bfs-input::placeholder, .bfs-textarea::placeholder { color: var(--bfs-text-muted); }
+.bfs-textarea { min-height: 6rem; resize: vertical; }
+
+.bfs-input:disabled, .bfs-select:disabled, .bfs-textarea:disabled {
+  background: var(--bfs-ice-soft);
+  color: var(--bfs-text-muted);
+  cursor: not-allowed;
+}
+
+/* Validation — set aria-invalid="true" on the control, pair with .bfs-error-msg */
+.bfs-input[aria-invalid="true"],
+.bfs-select[aria-invalid="true"],
+.bfs-textarea[aria-invalid="true"] { border-color: var(--bfs-red); }
+
+.bfs-error-msg {
+  display: flex;
+  align-items: center;
+  gap: var(--bfs-space-1);
+  font-size: var(--bfs-text-xs);
+  font-weight: 600;
+  color: var(--bfs-red-hover);
+  margin-top: var(--bfs-space-1);
+}
+.bfs-error-msg svg { width: 1em; height: 1em; }
+
+/* Checkboxes & radios — native controls, brand accent */
+.bfs-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bfs-space-2);
+  font-size: var(--bfs-text-sm);
+  cursor: pointer;
+  margin-bottom: var(--bfs-space-2);
+}
+.bfs-check input[type="checkbox"],
+.bfs-check input[type="radio"] {
+  accent-color: var(--bfs-blue);
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0.15rem 0 0;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   App shell — topbar + sidebar + main
+   ========================================================================== */
+
+.bfs-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "topbar topbar" "sidebar main";
+  min-height: 100vh;
+}
+.bfs-shell > .bfs-topbar  { grid-area: topbar; }
+.bfs-shell > .bfs-sidebar { grid-area: sidebar; }
+.bfs-shell > .bfs-main    { grid-area: main; }
+@media (max-width: 900px) {
+  .bfs-shell { grid-template-columns: 1fr; grid-template-areas: "topbar" "main"; }
+  .bfs-shell > .bfs-sidebar { display: none; }
+}
+
+.bfs-topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--bfs-space-6);
+  padding: var(--bfs-space-3) var(--bfs-space-6);
+  background: var(--bfs-bg);
+  border-bottom: 1px solid var(--bfs-border);
+}
+.bfs-topbar .bfs-logo { max-height: 32px; }
+.bfs-topbar-spacer { flex: 1; }
+
+.bfs-sidebar {
+  padding: var(--bfs-space-6) var(--bfs-space-4);
+  background: var(--bfs-ice-soft);
+  border-right: 1px solid var(--bfs-border);
+}
+
+.bfs-main {
+  padding: var(--bfs-space-8);
+  min-width: 0; /* let tables/code scroll instead of blowing out the grid */
+}
+
+/* Nav links — active state is a tinted pill, never a border accent */
+.bfs-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--bfs-space-2);
+  padding: var(--bfs-space-2) var(--bfs-space-3);
+  border-radius: var(--bfs-radius-sm);
+  font-size: var(--bfs-text-sm);
+  font-weight: 500;
+  color: var(--bfs-text);
+  text-decoration: none;
+  margin-bottom: var(--bfs-space-1);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.bfs-nav-link svg { width: 1.1em; height: 1.1em; color: var(--bfs-text-muted); }
+.bfs-nav-link:hover { background: var(--bfs-ice); color: var(--bfs-text); }
+.bfs-nav-link.active,
+.bfs-nav-link[aria-current="page"] {
+  background: var(--bfs-blue-tint);
+  color: var(--bfs-blue-hover);
+  font-weight: 600;
+}
+.bfs-nav-link.active svg, .bfs-nav-link[aria-current="page"] svg { color: var(--bfs-blue); }
+
+.bfs-nav-heading {
+  font-size: var(--bfs-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bfs-text-muted);
+  margin: var(--bfs-space-6) 0 var(--bfs-space-2) var(--bfs-space-3);
+}
+
+/* ==========================================================================
+   Tabs
+   ========================================================================== */
+
+.bfs-tabs {
+  display: flex;
+  gap: var(--bfs-space-1);
+  border-bottom: 1px solid var(--bfs-border);
+  margin-bottom: var(--bfs-space-6);
+}
+.bfs-tab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--bfs-font);
+  font-size: var(--bfs-text-sm);
+  font-weight: 500;
+  color: var(--bfs-text-muted);
+  padding: var(--bfs-space-2) var(--bfs-space-4);
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.bfs-tab:hover { color: var(--bfs-text); }
+.bfs-tab.active,
+.bfs-tab[aria-selected="true"] {
+  color: var(--bfs-blue-hover);
+  font-weight: 600;
+  border-bottom-color: var(--bfs-blue);
+}
+
+/* ==========================================================================
+   Modal & drawer — style native <dialog>
+   ========================================================================== */
+
+.bfs-modal, .bfs-drawer {
+  border: 1px solid var(--bfs-border);
+  background: var(--bfs-white);
+  color: var(--bfs-text);
+  padding: var(--bfs-space-8);
+  box-shadow: var(--bfs-shadow-lg);
+}
+.bfs-modal::backdrop, .bfs-drawer::backdrop {
+  background: color-mix(in srgb, var(--bfs-dark) 45%, transparent);
+}
+
+.bfs-modal {
+  border-radius: var(--bfs-radius-lg);
+  width: min(520px, calc(100vw - 2 * var(--bfs-space-6)));
+  margin: auto;
+}
+
+.bfs-drawer {
+  border-radius: var(--bfs-radius-lg) 0 0 var(--bfs-radius-lg);
+  width: min(400px, 90vw);
+  max-height: 100vh;
+  height: 100vh;
+  margin: 0 0 0 auto;
+  box-sizing: border-box;
+}
+
+.bfs-modal-title { margin-bottom: var(--bfs-space-2); }
+
+.bfs-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--bfs-space-3);
+  margin-top: var(--bfs-space-8);
+}
+
+/* Destructive confirms are the ONE place red buttons appear in UI */
+.bfs-btn-danger { background: var(--bfs-red); color: var(--bfs-white); }
+.bfs-btn-danger:hover { background: var(--bfs-red-hover); color: var(--bfs-white); }
+
+/* ==========================================================================
+   Alerts & toasts
+   ========================================================================== */
+
+.bfs-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bfs-space-3);
+  padding: var(--bfs-space-4) var(--bfs-space-6);
+  border-radius: var(--bfs-radius-md);
+  font-size: var(--bfs-text-sm);
+  margin-bottom: var(--bfs-space-4);
+}
+.bfs-alert svg { width: 1.25em; height: 1.25em; flex-shrink: 0; margin-top: 0.1em; }
+.bfs-alert strong { display: block; }
+
+.bfs-alert-info    { background: var(--bfs-ice-soft);  color: var(--bfs-text); }
+.bfs-alert-info svg    { color: var(--bfs-blue); }
+.bfs-alert-success { background: var(--bfs-blue-tint); color: var(--bfs-blue-hover); }
+.bfs-alert-warning { background: var(--bfs-cream);     color: var(--bfs-dark); }
+.bfs-alert-error   { background: var(--bfs-red-tint);  color: var(--bfs-red-hover); }
+
+.bfs-toast-stack {
+  position: fixed;
+  bottom: var(--bfs-space-6);
+  right: var(--bfs-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bfs-space-2);
+  z-index: 100;
+}
+.bfs-toast {
+  display: flex;
+  align-items: center;
+  gap: var(--bfs-space-2);
+  background: var(--bfs-dark);
+  color: var(--bfs-white);
+  font-size: var(--bfs-text-sm);
+  padding: var(--bfs-space-3) var(--bfs-space-4);
+  border-radius: var(--bfs-radius-md);
+  box-shadow: var(--bfs-shadow-lg);
+  animation: bfs-toast-in 0.2s ease-out;
+}
+.bfs-toast svg { width: 1.1em; height: 1.1em; color: var(--bfs-blue); }
+.bfs-toast.error svg { color: var(--bfs-red); }
+@keyframes bfs-toast-in {
+  from { opacity: 0; transform: translateY(var(--bfs-space-2)); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+   Table extensions — builds on .bfs-table
+   ========================================================================== */
+
+.bfs-th-sort button {
+  appearance: none;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bfs-space-1);
+  padding: 0;
+}
+.bfs-th-sort button svg { width: 0.9em; height: 0.9em; color: var(--bfs-text-muted); }
+.bfs-th-sort[aria-sort] button { color: var(--bfs-blue-hover); }
+.bfs-th-sort[aria-sort] button svg { color: var(--bfs-blue); }
+
+.bfs-table tbody tr { transition: background-color 0.15s ease; }
+.bfs-table tbody tr:hover { background: var(--bfs-ice); }
+.bfs-table tbody tr.selected,
+.bfs-table tbody tr[aria-selected="true"] { background: var(--bfs-blue-tint); }
+
+/* ==========================================================================
+   Loading — skeletons & spinner
+   ========================================================================== */
+
+.bfs-skeleton {
+  display: block;
+  background: linear-gradient(90deg, var(--bfs-ice-soft) 25%, var(--bfs-ice) 50%, var(--bfs-ice-soft) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--bfs-radius-sm);
+  min-height: 1em;
+  animation: bfs-shimmer 1.4s ease-in-out infinite;
+}
+.bfs-skeleton-text  { height: 0.875rem; margin-bottom: var(--bfs-space-2); }
+.bfs-skeleton-title { height: 1.5rem; width: 60%; margin-bottom: var(--bfs-space-4); }
+@keyframes bfs-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+.bfs-spinner {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--bfs-ice);
+  border-top-color: var(--bfs-blue);
+  border-radius: var(--bfs-radius-full);
+  animation: bfs-spin 0.7s linear infinite;
+}
+@keyframes bfs-spin { to { transform: rotate(360deg); } }
+
+/* ==========================================================================
+   Empty & error states — centered, one icon chip, one action
+   ========================================================================== */
+
+.bfs-empty {
+  text-align: center;
+  padding: var(--bfs-space-16) var(--bfs-space-6);
+  max-width: 420px;
+  margin-inline: auto;
+}
+.bfs-empty .bfs-icon-chip { margin-inline: auto; }
+.bfs-empty h3 { margin-bottom: var(--bfs-space-2); }
+.bfs-empty p { color: var(--bfs-text-muted); font-size: var(--bfs-text-sm); }
+.bfs-empty.error .bfs-icon-chip { background: var(--bfs-red-tint); color: var(--bfs-red); }
