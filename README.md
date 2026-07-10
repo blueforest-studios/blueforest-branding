@@ -7,13 +7,13 @@ The BlueForest Studios brand identity as a portable design system: a real styles
 The complete brand CSS — tokens, buttons, cards, badges, tables, dark scope — is one stylesheet. Link it from any HTML page or tool:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
 ```
 
 For app/product UI, add the component layer (forms, app shell, tabs, modals, toasts, tables, loading/empty states):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
 ```
 
 Source: [`assets/tokens.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css) · [`assets/ui.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css)
@@ -33,7 +33,7 @@ The skill ([`SKILL.md`](plugins/blueforest-branding/skills/blueforest-branding/S
 ### Claude Code (plugin)
 
 ```bash
-claude plugins add github:ammonehrisman/blueforest-branding
+claude plugins add github:blueforest-studios/blueforest-branding
 ```
 
 Optional but recommended — the Iconify MCP for icon search:

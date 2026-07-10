@@ -7,8 +7,8 @@ For building actual interfaces: dashboards, internal tools, forms, admin panels,
 Link **both** (ui.css builds on tokens.css):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
 ```
 
 Self-contained deliverables: inline both files.

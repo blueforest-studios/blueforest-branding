@@ -28,7 +28,7 @@ The complete brand CSS (tokens + components) lives in `assets/tokens.css`. Two w
 **Option A — link it (default for deployed sites):**
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
 ```
 
 **Option B — inline it (for fully self-contained single-file deliverables):** read `assets/tokens.css` and paste it into the page's `<style>` tag.
@@ -36,7 +36,7 @@ The complete brand CSS (tokens + components) lives in `assets/tokens.css`. Two w
 For **app/product UI**, additionally load `assets/ui.css` (component layer: forms, app shell, tabs, modals, toasts, tables, loading/empty states — builds on tokens.css, link it second):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
 ```
 
 Either way, **never redefine or hardcode brand values** — use the `--bfs-*` custom properties and `.bfs-*` component classes from the stylesheet. Page-specific CSS goes in its own `<style>` block and builds on the tokens (`var(--bfs-space-8)`, `var(--bfs-text-2xl)`, etc.), never on raw hex or magic pixel values.
@@ -66,8 +66,8 @@ Add `&family=JetBrains+Mono:wght@400;600` to the same URL when the page has code
 
 Embed from the permanent URLs — never base64, never Read/Glob for local files:
 
-- **Blue** (on white/cream/ice): `https://raw.githubusercontent.com/ammonehrisman/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_blue.svg`
-- **White** (on `.bfs-dark` sections and photos): `https://raw.githubusercontent.com/ammonehrisman/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_white.svg`
+- **Blue** (on white/cream/ice): `https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_blue.svg`
+- **White** (on `.bfs-dark` sections and photos): `https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_white.svg`
 
 ```html
 <img src="…logo_blue.svg" alt="BlueForest Studios" class="bfs-logo">
