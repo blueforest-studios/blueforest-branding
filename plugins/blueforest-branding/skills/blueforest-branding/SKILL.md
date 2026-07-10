@@ -1,21 +1,25 @@
 ---
 name: blueforest-branding
 description: |
-  Apply BlueForest Studios brand identity (logo, colors, fonts, icons) to HTML files and web designs. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects.
+  Apply the BlueForest Studios design system (logo, colors, fonts, icons, UI components, motion) to web pages, app interfaces, and video motion graphics. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects.
 ---
 
-# BlueForest Studios Branding
+# BlueForest Studios Design System
 
-Apply the BlueForest Studios brand identity to HTML and web designs. BlueForest Studios is a video production company — tagline: **Integrated Video Production**.
+Apply the BlueForest Studios brand identity. BlueForest Studios is a video production company — tagline: **Integrated Video Production**.
 
-## Site type — pick a register first
+## Pick your subset first
 
-Decide which kind of page this is, then read the matching reference file for layout, tone, and component guidance:
+Decide what you're building, then read the matching reference file:
 
-- **Marketing / landing / portfolio page** → read `references/marketing-sites.md`
-- **Technical / docs / dashboard / internal tool** → read `references/technical-sites.md`
+| Building… | Read | Stylesheets |
+|---|---|---|
+| Marketing / landing / portfolio page | `references/marketing-sites.md` | tokens.css |
+| Technical / docs page | `references/technical-sites.md` | tokens.css |
+| App / dashboard / tool UI | `references/ui-design.md` | tokens.css + ui.css |
+| Video motion graphics (logo stings, lower thirds, explainers) | `references/motion-graphics.md` | — (production spec, not CSS) |
 
-The single most important difference: **on marketing pages red means CTA (one per page); on technical pages red means error/danger only.**
+The single most important web rule: **on marketing pages red means CTA (one per page); everywhere else red means error/danger only.**
 
 ## The design system stylesheet
 
@@ -28,6 +32,12 @@ The complete brand CSS (tokens + components) lives in `assets/tokens.css`. Two w
 ```
 
 **Option B — inline it (for fully self-contained single-file deliverables):** read `assets/tokens.css` and paste it into the page's `<style>` tag.
+
+For **app/product UI**, additionally load `assets/ui.css` (component layer: forms, app shell, tabs, modals, toasts, tables, loading/empty states — builds on tokens.css, link it second):
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
+```
 
 Either way, **never redefine or hardcode brand values** — use the `--bfs-*` custom properties and `.bfs-*` component classes from the stylesheet. Page-specific CSS goes in its own `<style>` block and builds on the tokens (`var(--bfs-space-8)`, `var(--bfs-text-2xl)`, etc.), never on raw hex or magic pixel values.
 

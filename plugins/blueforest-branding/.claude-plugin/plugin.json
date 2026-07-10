@@ -1,7 +1,7 @@
 {
   "name": "blueforest-branding",
-  "version": "2.0.0",
-  "description": "Apply BlueForest Studios brand identity (logo, colors, fonts, icons) to HTML files and web designs",
+  "version": "3.0.0",
+  "description": "Apply the BlueForest Studios design system (logo, colors, fonts, icons, UI components, motion) to web pages, app interfaces, and video motion graphics",
   "author": {
     "name": "BlueForest Studios",
     "email": "ammon@blueforeststudios.com"

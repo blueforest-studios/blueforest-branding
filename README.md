@@ -10,14 +10,22 @@ The complete brand CSS — tokens, buttons, cards, badges, tables, dark scope �
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
 ```
 
-Source: [`plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css)
+For app/product UI, add the component layer (forms, app shell, tabs, modals, toasts, tables, loading/empty states):
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ammonehrisman/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
+```
+
+Source: [`assets/tokens.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css) · [`assets/ui.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css)
 
 ## The skill
 
-The skill ([`SKILL.md`](plugins/blueforest-branding/skills/blueforest-branding/SKILL.md)) applies the system: register selection (marketing vs technical), logo rules, icon workflow, card variants, and an explicit anti-pattern list. References load on demand:
+The skill ([`SKILL.md`](plugins/blueforest-branding/skills/blueforest-branding/SKILL.md)) applies the system across four subsets — marketing pages, technical pages, app UI, and video motion graphics. References load on demand:
 
 - `references/marketing-sites.md` — landing/portfolio register (warm, spacious, red = the one CTA)
 - `references/technical-sites.md` — docs/dashboard register (cool, dense, red = errors only)
+- `references/ui-design.md` — app/dashboard UI rules + a self-contained style prompt block for claude.ai/design and tools that can't link CSS
+- `references/motion-graphics.md` — video motion spec: approved logo entrances, the Word Rise lower third, motion language (easing/springs/timings), and text readability standards
 - `references/icons.md` — 12 inline Lucide icons for environments without the Iconify MCP
 
 ## Install
