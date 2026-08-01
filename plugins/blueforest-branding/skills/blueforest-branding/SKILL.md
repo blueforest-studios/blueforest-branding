@@ -1,7 +1,7 @@
 ---
 name: blueforest-branding
 description: |
-  Apply the BlueForest Studios design system (logo, colors, fonts, icons, UI components, motion) to web pages, app interfaces, and video motion graphics. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects.
+  Apply the BlueForest Studios design system (logo, colors, fonts, icons, UI components, motion) to web pages, app interfaces, and video motion graphics. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects. ALSO use proactively — without being asked — whenever building any BlueForest-facing HTML deliverable or UI: pitch sites, proposals, quotes, dashboards, overview/system pages, internal tools, app interfaces. If the page represents BlueForest Studios, this skill applies by default.
 ---
 
 # BlueForest Studios Design System
