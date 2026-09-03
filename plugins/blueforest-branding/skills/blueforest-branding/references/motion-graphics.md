@@ -73,6 +73,12 @@ assets in the motion lab's `public/logos/`. Tree always leads; text follows
   line (bounce spring) and lands flat; "blueforest" mask-rises at f5,
   "studios" at f15 (16f eases).
 
+**Lottie versions** (Rise duo + Tilt duo, blue and white colorways):
+`assets/lottie/bfs-logo-{rise,tilt}-duo_{blue,white}.json` — 3840×2160 @24fps,
+96f, transparent, pure vector shapes with springs/eases baked per-frame from
+the lab code. Work in Remotion (`@remotion/lottie`), DaVinci Resolve 21+
+(drag into media pool; alpha auto-recognized), lottie-web, and Skottie.
+
 ### Lower third — "Word Rise" (the approved style)
 
 Picked from 12 candidates; tested over interview footage, lower-left.
