@@ -21,6 +21,9 @@ claude plugin update blueforest-branding@blueforest-branding
 - Dashboard icon: swatch fan deck, `blueforest-icons/blueforest-branding.svg` (family style: black outline, one `#009FE0` accent).
 - Blair is the system of record for the project registration; the System Building Dashboard row mirrors it.
 
+## v4 "Frame" (2026-10-05)
+Chosen from the brand-refresh rounds (`../brand-refresh-2026/`, direction C2). Ships as **new files** (`assets/frame.css`, `assets/frame.js`, `templates/{pitch,landing,plan}.html`, `references/{pitch-sites,landing-pages,planning-sites,imagery}.md`). v3 `tokens.css`/`ui.css` are untouched because ~22 existing pages link them via `@main`. v4 links are **pinned to `@v4.0.0`**: bump the tag (and SKILL.md/templates/README URLs) on every release. The "Integrated Video Production" tagline is retired. The stills library is a separate effort; client imagery must **never** enter this public repo.
+
 ## Status / What's Next
 1. **Design-system build in claude.ai/design** — bring the skill's brand rules in as the foundation; add UI-design mode + motion-graphics mode. (The driving goal, 2026-07-08.)
 2. **NotebookLM notebook (follow-up, deferred until the design system has real docs):** run the standard recipe — publish key docs as Google Docs into a Drive folder `"SYS-2026-016 BlueForest Design System — NotebookLM Sources"`, create the notebook as ammon@blueforeststudios.com named `"SYS-2026-016 — BlueForest Design System"`, generate Audio/Video overviews, then record the link in the dashboard's Notebook LM column **and** `registry.notebooklm_url` in Blair (the registry is the system of record). Recipe details: Blair repo → `docs/notebooklm-dashboard-feature.md`.

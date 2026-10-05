@@ -1,32 +1,29 @@
-# BlueForest Branding — Design System & Claude Code Plugin
+# BlueForest Branding — Design System v4 "Frame" & Claude Code Plugin
 
-The BlueForest Studios brand identity as a portable design system: a real stylesheet (`tokens.css`) plus a Claude skill that knows how to apply it.
+The BlueForest Studios brand as a portable design system: one stylesheet (`frame.css`), one small runtime (`frame.js`), three page templates, and a Claude skill that knows how to use them.
 
 ## The design system (works anywhere)
 
-The complete brand CSS — tokens, buttons, cards, badges, tables, dark scope — is one stylesheet. Link it from any HTML page or tool:
-
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 ```
 
-For app/product UI, add the component layer (forms, app shell, tabs, modals, toasts, tables, loading/empty states):
+Always link a **version tag**, never `@main`, so deployed pages don't change under you.
 
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
-```
+- Three surfaces (`.bfs-light` / `.bfs-mid` / `.bfs-dark`): dark at the top, ≤25% of the page; `BFS.audit()` checks it.
+- Action language: ▶ plays in the on-page player · → internal page · ↗ external.
+- Viewfinder marks (`.bfs-vf`), camera-display labels (`.bfs-hud`), Saira throughout.
 
-Source: [`assets/tokens.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css) · [`assets/ui.css`](plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css)
+Templates: [`pitch.html`](plugins/blueforest-branding/skills/blueforest-branding/templates/pitch.html) (proposals) · [`landing.html`](plugins/blueforest-branding/skills/blueforest-branding/templates/landing.html) (website / landing pages) · [`plan.html`](plugins/blueforest-branding/skills/blueforest-branding/templates/plan.html) (system and project plans).
 
 ## The skill
 
-The skill ([`SKILL.md`](plugins/blueforest-branding/skills/blueforest-branding/SKILL.md)) applies the system across four subsets — marketing pages, technical pages, app UI, and video motion graphics. References load on demand:
+[`SKILL.md`](plugins/blueforest-branding/skills/blueforest-branding/SKILL.md) routes by page type and loads the matching reference: `pitch-sites.md`, `landing-pages.md`, `planning-sites.md`, `imagery.md`, plus `motion-graphics.md`, `ui-design.md` (app UI, still v3), and `icons.md`.
 
-- `references/marketing-sites.md` — landing/portfolio register (warm, spacious, red = the one CTA)
-- `references/technical-sites.md` — docs/dashboard register (cool, dense, red = errors only)
-- `references/ui-design.md` — app/dashboard UI rules + a self-contained style prompt block for claude.ai/design and tools that can't link CSS
-- `references/motion-graphics.md` — video motion spec: approved logo entrances, the Word Rise lower third, motion language (easing/springs/timings), and text readability standards
-- `references/icons.md` — 12 inline Lucide icons for environments without the Iconify MCP
+### v3 (legacy)
+`assets/tokens.css` + `assets/ui.css` (Poppins, cream/ice, pill buttons) stay published at their old URLs so pages built before v4 keep working. Don't mix v3 and v4 on one page.
 
 ## Install
 

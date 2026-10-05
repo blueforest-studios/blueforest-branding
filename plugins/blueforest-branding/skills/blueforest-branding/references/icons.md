@@ -1,6 +1,6 @@
 # Icon Fallback Library (Lucide, inline SVG)
 
-Use these when the Iconify MCP is unavailable (claude.ai, other tools). All are 24×24 stroke icons colored by `currentColor` — wrap in `.bfs-icon` or `.bfs-icon-chip` and they inherit size/color. New icons must match this style: `fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"`.
+Use these when the Iconify MCP is unavailable (claude.ai, other tools). All are 24×24 stroke icons colored by `currentColor` — give them `class="bfs-icon"` (v4) — inside a `.bfs-chip` for card headers — and they inherit size/color. New icons must match this style: `fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"`.
 
 **arrow-right** (CTAs, links)
 ```html

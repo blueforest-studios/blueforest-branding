@@ -1,7 +1,7 @@
 {
   "name": "blueforest-branding",
-  "version": "3.0.0",
-  "description": "Apply the BlueForest Studios design system (logo, colors, fonts, icons, UI components, motion) to web pages, app interfaces, and video motion graphics",
+  "version": "4.0.0",
+  "description": "Apply the BlueForest Studios design system v4 \"Frame\" (Saira type, three-surface color system, viewfinder marks, action language, page templates for pitch/landing/planning sites, imagery, motion) to web pages, app interfaces, and video motion graphics",
   "author": {
     "name": "BlueForest Studios",
     "email": "ammon@blueforeststudios.com"

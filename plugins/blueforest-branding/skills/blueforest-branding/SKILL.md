@@ -1,134 +1,118 @@
 ---
 name: blueforest-branding
 description: |
-  Apply the BlueForest Studios design system (logo, colors, fonts, icons, UI components, motion) to web pages, app interfaces, and video motion graphics. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects. ALSO use proactively — without being asked — whenever building any BlueForest-facing HTML deliverable or UI: pitch sites, proposals, quotes, dashboards, overview/system pages, internal tools, app interfaces. If the page represents BlueForest Studios, this skill applies by default.
+  Apply the BlueForest Studios design system v4 "Frame" (logo, Saira type, three-surface color system, viewfinder marks, action language, imagery, components, motion) to web pages, app interfaces, and video motion graphics. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects. ALSO use proactively — without being asked — whenever building any BlueForest-facing HTML deliverable: pitch/proposal sites, landing pages, the website, system-building plans and overview pages, internal tools, dashboards. If the page represents BlueForest Studios, this skill applies by default.
 ---
 
-# BlueForest Studios Design System
+# BlueForest Studios Design System v4 "Frame"
 
-Apply the BlueForest Studios brand identity. BlueForest Studios is a video production company — tagline: **Integrated Video Production**.
+BlueForest Studios makes **video, websites, and marketing strategy** (three practices) from Raleigh, NC. The brand is seen through a camera: dark cinematic tops, bright working pages, viewfinder marks, and camera-display labels.
 
-## Pick your subset first
+> **Tagline:** "Integrated Video Production" is **retired** (2026-10-05). Never use it. A new tagline is TBD; until then the logo stands alone, and hero eyebrows name the practices: `Video · Web · Marketing strategy — Raleigh, NC`.
 
-Decide what you're building, then read the matching reference file:
+## Pick the page type first
 
-| Building… | Read | Stylesheets |
+| Building… | Start from | Read |
 |---|---|---|
-| Marketing / landing / portfolio page | `references/marketing-sites.md` | tokens.css |
-| Technical / docs page | `references/technical-sites.md` | tokens.css |
-| App / dashboard / tool UI | `references/ui-design.md` | tokens.css + ui.css |
-| Video motion graphics (logo stings, lower thirds, explainers) | `references/motion-graphics.md` | — (production spec, not CSS) |
+| Client proposal / pitch site | `templates/pitch.html` | `references/pitch-sites.md` |
+| Landing page, website page, product/practice page | `templates/landing.html` | `references/landing-pages.md` |
+| System plan, project/campaign plan, overview page, weekly review | `templates/plan.html` | `references/planning-sites.md` |
+| Any page with photos | — | `references/imagery.md` (library first) |
+| App / dashboard / internal tool UI | — | `references/ui-design.md` (still v3 components; see "Legacy" below) |
+| Video motion graphics (logo stings, lower thirds) | — | `references/motion-graphics.md` |
 
-The single most important web rule: **on marketing pages red means CTA (one per page); everywhere else red means error/danger only.**
+Copy the template, fill every `REPLACE`, and delete sections that don't apply. Don't rebuild structure from scratch.
 
-## The design system stylesheet
-
-The complete brand CSS (tokens + components) lives in `assets/tokens.css`. Two ways to use it:
-
-**Option A — link it (default for deployed sites):**
+## Stylesheet + runtime
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 ```
 
-**Option B — inline it (for fully self-contained single-file deliverables):** read `assets/tokens.css` and paste it into the page's `<style>` tag.
+- **Always pin the version tag** (`@v4.0.0`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
+- For self-contained single files, inline `assets/frame.css` and `assets/frame.js`.
+- Add `&family=JetBrains+Mono:wght@400;600` to the font URL only when the page contains code.
+- Page-specific CSS builds on `--bfs-*` tokens. **No raw hex in page CSS.**
 
-For **app/product UI**, additionally load `assets/ui.css` (component layer: forms, app shell, tabs, modals, toasts, tables, loading/empty states — builds on tokens.css, link it second):
+## The rules
 
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@main/plugins/blueforest-branding/skills/blueforest-branding/assets/ui.css">
-```
+### 1 · Three surfaces
+Every top-level section carries exactly one: `.bfs-light` (white, the default and **always the largest share**), `.bfs-mid` (warm gray `#E9E7E4`, for section breaks), or `.bfs-dark` (near-black `#141112`).
+- **Dark starts the page** (nav + hero/title band) and closes it (footer). Use it in between only for a big title or image band on long pages. Never two dark sections in a row.
+- **Dark ≤ 25% of page height, and never on a copy-heavy section.** Dark is for titles and imagery.
+- Below the top, **alternate light ↔ mid** to mark chapters.
+- Dark *images* may sit on light or mid sections (for example, the subtitle testimonial). Images don't count as surface.
+- Verify with `BFS.audit()` in the console, or drop `<div data-bfs-audit></div>` into a draft. It reports the light/mid/dark split and flags violations.
 
-Either way, **never redefine or hardcode brand values** — use the `--bfs-*` custom properties and `.bfs-*` component classes from the stylesheet. Page-specific CSS goes in its own `<style>` block and builds on the tokens (`var(--bfs-space-8)`, `var(--bfs-text-2xl)`, etc.), never on raw hex or magic pixel values.
+### 2 · Action language: a visitor always knows what a click does
+| Signal | Means | Markup |
+|---|---|---|
+| ▶ | Plays a video **in the on-page player** | `<button class="bfs-media bfs-vf" data-play data-src data-title [data-href]>` |
+| → | Opens **another page on our site** | `<a class="bfs-media bfs-vf" href>` / `.bfs-act` with the `bfs-arrow` icon |
+| ↗ | **Leaves our site** (text link only, new tab) | `.bfs-act` with the `bfs-ext` icon, `target="_blank" rel="noopener"` |
+- Clickable images show a **type tag** at all times (`.bfs-tag`: `▶ 2:14` / `Website` / `Strategy`) and a **hover pill** naming the action (`.bfs-pill`).
+- Every action is **repeated as a text link** (`.bfs-acts`) so it works on touch screens.
+- Websites always sit in `.bfs-browser` chrome.
+- The only playhead is the player's scrub bar. No auto-moving or hover-scrub mechanics.
+- `data-src` is an mp4/webm URL (native `<video>`) or an embed URL (Frame.io, YouTube, and so on, in an `<iframe>`). `frame.js` builds the player.
 
-### Quick token reference
+### 3 · Viewfinder marks mean "this is the subject"
+`.bfs-vf` draws four corner marks. They **lock on** to clickable media on hover, frame the hero and featured films, and frame what matters (callouts, the form panel). Don't put them on every box; that cheapens them.
 
-- Colors: `--bfs-blue` `--bfs-dark` `--bfs-white` `--bfs-silver` `--bfs-red` `--bfs-grey` `--bfs-cream` `--bfs-ice`; derived: `--bfs-blue-hover`, `--bfs-blue-tint`, `--bfs-ice-soft`, `--bfs-cream-soft` (never hardcode hover/tint hex — they're `color-mix()` derived)
-- Semantic: `--bfs-bg` `--bfs-text` `--bfs-text-muted` `--bfs-border` (flip automatically inside `.bfs-dark` scope)
-- Type: fluid scale `--bfs-text-xs` → `--bfs-text-hero` (clamp-based; never fixed px headings)
-- Spacing: `--bfs-space-1` → `--bfs-space-32` (4px base)
-- Radius: `--bfs-radius-sm/md/lg/full`; Shadows: `--bfs-shadow-sm/md/lg`
-- Components: `.bfs-container`, `.bfs-section` (+ `-cream`/`-ice`), `.bfs-grid`, `.bfs-btn` (+ `-primary`/`-secondary`/`-accent`), `.bfs-card`, `.bfs-card-tinted`, `.bfs-icon-chip`, `.bfs-badge` (+ `-done`/`-active`/`-pending`/`-error`), `.bfs-table`, `.bfs-logo`, `.bfs-dark`
+### 4 · Type: Saira, one family
+- Headings: weight 700, `font-stretch: 87.5%`, tight leading.
+- Body: 17px at 100% width.
+- HUD labels (`.bfs-hud`): 125% width, uppercase, tracked. Use them only where a camera would show data or a form would show a field label (timecodes, specs, status, metadata, section kickers). Never as decoration above every heading.
+- Numbers are always Saira (tabular). Mono is for code only.
+- Fluid scale: `--bfs-t-hud … --bfs-t-hero`. Never use fixed-px headings.
 
-## Typography
+### 5 · Color
+| Token | Hex | Use |
+|---|---|---|
+| `--bfs-blue` | `#009DDC` | BlueForest Blue (Pantone 299): primary buttons, marks, list ticks, one highlighted word in a hero headline |
+| `--bfs-blue-text` | `#0077A8` | Blue for small text on light/mid (via `--bfs-accent`) |
+| `--bfs-black` | `#141112` | Dark surface |
+| `--bfs-ink` | `#231F20` | Brand dark: text on light, panels on dark |
+| `--bfs-bone` | `#ECE9E6` | Text on dark |
+| `--bfs-warm` | `#E9E7E4` | Mid surface |
+| `--bfs-silver` / `--bfs-grey` | `#B6B8BA` / `#5E6468` | Muted text on dark / light |
+| `--bfs-tally` | `#DB3E26` | Brand red: **REC light, errors, and risks only.** Never a CTA, never decoration. |
 
-Brand font is **Diavlo** (print). On the web use **Poppins**; monospace is **JetBrains Mono** (technical pages only):
+Cream and ice from v3 are retired on v4 pages.
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-```
+### 6 · Logo
+- White variant on dark (nav, footer): `https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_white.svg`
+- Blue variant (`…_logo_blue.svg`) on light, only if a light nav is ever needed.
+- Never distort, recolor, or `filter:` the logo; keep ≥16px clear space. The SVGs are tightly cropped, so size them with `height`.
 
-Add `&family=JetBrains+Mono:wght@400;600` to the same URL when the page has code.
+## Component quick reference
+Layout `.bfs-wrap` `.bfs-section(-tight)` `.bfs-sh` `.bfs-split(-even)` `.bfs-grid(-2)` `.bfs-doc` + `.bfs-toc` `.bfs-prose` ·
+Top `.bfs-nav` `.bfs-hero` `.bfs-hero-head` `.bfs-frame` `.bfs-osd.tl/.tr/.bl/.br` `.bfs-rec` `[data-tc]` `.bfs-play` ·
+Media `.bfs-media` `.bfs-still` `.bfs-tag` `.bfs-pill` `.bfs-ttl` `.bfs-browser` `.bfs-reel` `.bfs-tile(.big/.wide/.full)` `.bfs-tabs[data-filter]` ·
+Content `.bfs-metabar` `.bfs-cols` `.bfs-ticks` `.bfs-price` `.bfs-pick` `.bfs-new` `.bfs-table` `.bfs-when` `.bfs-num` `.bfs-subtitle` `.bfs-logos` ·
+Planning `.bfs-stats` `.bfs-stat` `.bfs-card` `.bfs-card-head` `.bfs-chip` `.bfs-st(-live/-done/-err)` `.bfs-callout(-warn)` `.bfs-checklist` ·
+Actions `.bfs-btn-blue` `.bfs-btn-ink` `.bfs-btn-line` `.bfs-act` `.bfs-acts` · Close `.bfs-cta` `.bfs-form` `.bfs-field` `.bfs-footer`
+Icons: `<svg class="bfs-icon"><use href="#bfs-play|bfs-arrow|bfs-ext"/></svg>` (sprite injected by frame.js). Other icons: inline Lucide (Iconify MCP, or `references/icons.md`).
 
-## Logo
-
-Embed from the permanent URLs — never base64, never Read/Glob for local files:
-
-- **Blue** (on white/cream/ice): `https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_blue.svg`
-- **White** (on `.bfs-dark` sections and photos): `https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_white.svg`
-
-```html
-<img src="…logo_blue.svg" alt="BlueForest Studios" class="bfs-logo">
-```
-
-The SVGs have a tightly cropped `viewBox` — they render at the correct visual size with simple CSS sizing; do not add padding or scaling adjustments.
-
-Placement: header top-left (`.bfs-logo`), hero centered (`.bfs-logo-hero`), footer (`.bfs-logo-footer`, white variant on dark). Always ≥16px clear space. Never distort, crop, or recolor — on dark backgrounds switch to the white variant, never CSS `filter: invert()`/`brightness()` hacks.
-
-## Cards — the rules
-
-Three approved variants, nothing else:
-
-1. **`.bfs-card`** — white, 1px ice border + soft shadow together, 2rem padding. The default.
-2. **`.bfs-card-tinted`** (add `.ice` for cool) — solid cream/ice background, no border, no shadow. Use on white sections for quiet feature grids.
-3. **Feature card** — `.bfs-card` or `.bfs-card-tinted` opening with a `.bfs-icon-chip` (48px tinted square holding a 24px icon), then h3, then body text.
-
-Status (done/in-progress/pending/error) is always a `.bfs-badge-*` pill inside the card — **never** encoded as a card border color.
-
-## Anti-patterns — never do these
-
-- ❌ **Colored top-border or left-border accent strips on cards** (`border-top: 3px solid …`). This is the #1 banned pattern. Use `.bfs-icon-chip` or `.bfs-badge` to add color instead.
-- ❌ Shadow-only cards (no border) on white, or shadowed cards on tinted sections — tinted sections get `.bfs-card-tinted` or plain white-bordered cards.
-- ❌ Hardcoded hex anywhere outside tokens.css — including hover states (`#0088c2` etc.); use the derived `-hover`/`-tint` variables.
-- ❌ Pure black `#000` — dark is always `--bfs-dark`.
-- ❌ Fixed-px heading sizes — use the fluid `--bfs-text-*` scale.
-- ❌ Gradients on heroes or buttons — brand surfaces are flat; depth comes from tinted sections and soft shadows.
-- ❌ Icon soup — an icon must carry meaning (nav, feature, status, contact). Never decorate every list item or heading.
-- ❌ More than two font weights within one component.
-
-## Icons
-
-Preferred: **Iconify MCP** (`mcp__iconify__search-icons` → `get-icon-snippet` with `raw-svg`), sets `lucide` > `heroicons` > `tabler`. Embed inline, color via `currentColor`.
-
-**No Iconify available** (claude.ai or other tools): use the 12 pre-fetched Lucide SVGs in `references/icons.md`, or hand-write simple 24×24 stroke SVGs matching Lucide style (`stroke-width="2"`, `stroke-linecap="round"`, `fill="none"`).
-
-Sizes: 16–20px inline, 24px buttons/nav, 24px inside `.bfs-icon-chip`, 48–64px hero.
-
-## Layout
-
-Avoid long runs of full-width text. Content sections should pair text with a visual element — a stat callout, image, quote panel, or CSS visualization — using the `.bfs-split` utilities (`-60-40`/`-40-60` variants; they stack on mobile automatically). Docs-style prose is the exception: single column, max-width 720px.
+## Anti-patterns — never
+- ❌ "Integrated Video Production" anywhere.
+- ❌ Generic "AI design" tropes: soft serif headlines, an italic accent word in every heading, cream "paper" backgrounds, mono `01 —` eyebrows on every section, pill-shaped everything.
+- ❌ Airy, half-empty layouts. Frame is dense: 6px image gutters, metadata bars instead of standalone stat sections, ruled columns instead of floating cards.
+- ❌ Ambiguous clickables: an image with no tag, no pill, or no text-link fallback; a video and a page link that look the same.
+- ❌ Dark sections holding long copy; dark above 25%; two dark sections in a row; mid larger than light.
+- ❌ Colored left/top border strips on cards; status shown as card color (use `.bfs-st`).
+- ❌ Red as a button or decoration. Gradients on buttons or surfaces (the only gradients are the legibility shades over images).
+- ❌ Raw hex in page CSS; `@main` stylesheet links on deployed pages; `filter` hacks on the logo.
+- ❌ Shipping with `REPLACE` markers or `picsum.photos` placeholders.
 
 ## Workflow
+1. Pick the page type and read its reference.
+2. Copy the template; fill content; delete what doesn't apply.
+3. Imagery: library first (`references/imagery.md`).
+4. Serve over http:// and check in the browser: `BFS.audit()` passes, no horizontal scroll at 375px, hover states show tag, pill, and marks, and `grep -c REPLACE` returns 0.
+5. Reviewable pages embed the `?review` overlay (`~/.claude/rules/frontend.md`).
 
-1. Pick the register (marketing vs technical) and read the matching reference file.
-2. Load fonts and the design system (link or inline `tokens.css`).
-3. Build with `.bfs-*` components and tokens; page-specific CSS extends them.
-4. Embed the correct logo variant(s).
-5. Add icons where they carry meaning.
-6. Include a simple inline SVG favicon in brand colors (legible at 16px).
-7. Responsive by default: viewport meta, `.bfs-grid`, fluid type does the rest.
-
-## Quality checklist
-
-- [ ] tokens.css linked or inlined; zero hardcoded brand hex in page CSS
-- [ ] Register chosen; red used correctly for it (CTA vs danger)
-- [ ] Cards use an approved variant; **no colored border-accent strips anywhere**
-- [ ] Status shown as badges, not border colors
-- [ ] Correct logo variant per background; clear space respected
-- [ ] Fluid type scale used for headings
-- [ ] Sections alternate white / cream-soft / ice-soft; dark sections use `.bfs-dark` with white logo
-- [ ] Text sections pair with visuals (`.bfs-split`); no full-width text walls
-- [ ] Favicon present (inline SVG, brand colors)
-- [ ] Responsive (viewport meta, grid, no horizontal scroll on mobile)
+## Legacy (v3)
+Pages built before 2026-10-05 link `assets/tokens.css` (and `ui.css` for apps), using Poppins, cream/ice, and pill buttons. **Leave them on v3 when editing**; don't mix v3 and v4 classes on one page. Migrate a page to v4 only when asked. App/dashboard UI still uses the v3 `ui.css` component layer until a v4 UI subset ships. v3 page rules are kept in `references/legacy/`.
