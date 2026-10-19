@@ -8,14 +8,14 @@ Internal pages generated from a markdown plan: system designs (SYS-* projects), 
 
 | Block | Surface | Component |
 |---|---|---|
-| Nav | dark | Logo + `System plan` HUD + one overall `.bfs-st` status |
-| Title band | dark, **compact** (`.bfs-section-tight`) | HUD with project code + updated date, `h1` at `--bfs-t-2xl`, one-line lede, `.bfs-st` chips (owner, phase, target) |
-| Key numbers | light | `.bfs-stats` of `.bfs-stat` cards |
+| Nav | dark | Logo + one overall `.bfs-st` status |
+| Header | dark | `.bfs-cine`: a frame from the project (or a library still), kicker naming the page type (`System plan`, `Creative brief`, `Weekly review`), `h1`, one summary sentence. Code, updated date, owner and phase go in the four corner readouts. See SKILL.md rule 2. |
+| Summary | mid | `.bfs-summary`: 2–4 labeled lines, for example What it is · Who it's for · What's next. Full sentences. |
 | Body | light | `.bfs-doc` = sticky `.bfs-toc` + content: `.bfs-prose`, `.bfs-grid` of `.bfs-card`s, `.bfs-table`, `.bfs-callout`, `.bfs-checklist` |
 | Decisions / next steps | mid | `.bfs-grid` of white `.bfs-card`s (cards automatically turn white on mid) |
 | Footer | dark | Project code · source `.md` path |
 
-Long copy always sits on **light**. Mid holds one short closing block. Dark is title only, so these pages usually audit at 15–20% dark.
+Long copy always sits on **light**. Mid holds the summary band and one short closing block. Dark is the header only, so these pages usually audit at 15–22% dark.
 
 ## House style (Ammon's standing preferences)
 
@@ -33,4 +33,5 @@ Long copy always sits on **light**. Mid holds one short closing block. Dark is t
 - Bulleted lists of things (components, workstreams) become a card grid. Lists of steps become a `.bfs-checklist` or table.
 - Tables stay tables (`.bfs-table`). Put dates in `.bfs-when` and money or numbers in `.bfs-num` cells.
 - Lines starting with "Note", "Warning", "Risk", or "Insight" become callouts.
-- Key numbers mentioned in the text get promoted to the `.bfs-stats` row at the top.
+- **Numbers stay where they belong:** a runtime goes in the cut section, a budget in the budget table. Never promote them to a stat row at the top. A `.bfs-stats` row is only for pages that are about numbers (dashboards, weekly reviews), and never directly under the header.
+- The markdown's opening paragraph becomes the header's one summary sentence plus the `.bfs-summary` lines. Rewrite it into plain, complete sentences rather than pasting fragments.

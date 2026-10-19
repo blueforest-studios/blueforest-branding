@@ -10,6 +10,15 @@ BlueForest is a video studio, so pages lead with real frames from real work. Ima
 
 Never use generic stock imagery that pretends to be BlueForest's own work.
 
+## Header image (every page)
+
+The `.bfs-cine` header always carries one image. First match wins:
+1. **A frame from this project:** footage (`ffmpeg -ss <t> -i <clip> -frames:v 1 -q:v 3 hero.jpg`), a style frame, a Remotion render, a screenshot of the system being planned. Log footage (C-Log, BRAW, S-Log) must go through a Rec.709 transform first; a flat grey frame is not usable.
+2. **A Stills Library frame** that matches the practice or industry.
+3. **A client asset** (product shot, location photo) the client has approved.
+
+Pick a frame with the subject in the upper or middle third and room around it for centered type; set `--focal` so the crop keeps the subject. Export about 1600–2000px wide as JPG or WebP under ~400 KB, saved beside the page. Client frames stay in the client's project folder, never in this public repo.
+
 ## Library status
 
 Not yet populated. Until it is, use options 2 and 3 above and tell Ammon which slots still need real stills. When the library goes live, this section will hold the manifest URL and query examples.

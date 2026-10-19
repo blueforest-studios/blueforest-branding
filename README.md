@@ -6,8 +6,8 @@ The BlueForest Studios brand as a portable design system: one stylesheet (`frame
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
-<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 ```
 
 Always link a **version tag**, never `@main`, so deployed pages don't change under you.

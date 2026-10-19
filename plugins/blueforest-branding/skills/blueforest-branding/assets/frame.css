@@ -2,7 +2,7 @@
    BlueForest Studios — Design System v4 "Frame"
    Canonical source: github.com/blueforest-studios/blueforest-branding
    Link (pinned — never @main for deployed pages):
-   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
+   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
    Pair with frame.js (player, filters, timecode, surface audit).
    Fonts: Saira (all text) — add JetBrains Mono only for code.
 
@@ -135,13 +135,50 @@ pre code{background:none;border:0;padding:0;color:inherit}
 .bfs-nav .bfs-btn{padding:.7rem 1.1rem}
 @media(max-width:860px){.bfs-nav ul li:not(:last-child){display:none}}
 
-/* ---- Hero (dark): headline + side copy, then a letterboxed frame ---- */
+/* ---- Split hero (dark): headline + side copy, then a letterboxed frame. Kept for v4.0 pages; new pages use .bfs-cine ---- */
 .bfs-hero{padding-block:clamp(1.75rem,3.5vw,3rem) clamp(1.5rem,3vw,2.5rem)}
 .bfs-hero-head{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:end;margin-bottom:clamp(1.25rem,2.5vw,2rem)}
 .bfs-hero-head .bfs-hud{display:block;margin-bottom:1rem}
 .bfs-hero-side p{font-size:var(--bfs-t-lg);color:var(--bfs-muted);max-width:40ch}
 .bfs-hero-side .bfs-btns{margin-top:1.25rem}
 @media(max-width:900px){.bfs-hero-head{grid-template-columns:1fr}}
+
+/* ---- Header (dark), the default page top since v4.1: one image, centered type, readouts in the corners.
+   Three text items at most: a short kicker, the h1, one summary line. Code/date/client/status go in .bfs-osd corners.
+   --focal moves the crop toward the subject (e.g. style="--focal:50% 12%" keeps the top of the frame). ---- */
+.bfs-cine{position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;min-height:clamp(352px,51vh,495px);padding-block:clamp(4rem,8vw,5.5rem);--vf-inset:16px;--vf-len:26px;--focal:50% 50%}
+.bfs-cine>img,.bfs-cine>video,.bfs-cine>picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--focal)}
+.bfs-cine::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,color-mix(in srgb,var(--bfs-black) 55%,transparent),color-mix(in srgb,var(--bfs-black) 78%,transparent))}
+.bfs-cine>.bfs-wrap{position:relative;z-index:2;max-width:56rem}
+.bfs-cine .bfs-hud{display:block}
+.bfs-cine h1{font-size:clamp(2.2rem,4.6vw,4rem);line-height:1.02;margin:.7rem 0 0;text-wrap:balance}
+.bfs-cine h1+p{font-size:var(--bfs-t-lg);color:var(--bfs-silver);max-width:none;margin:.9rem 0 0;text-wrap:balance}
+.bfs-cine .bfs-btns{justify-content:center;margin-top:1.5rem}
+.bfs-cine>.bfs-osd{opacity:.65}
+.bfs-cine>.bfs-osd:has(.bfs-play){opacity:1}
+.bfs-cine>.bfs-osd .bfs-hud{white-space:nowrap}
+.bfs-cine>.bfs-osd.tl,.bfs-cine>.bfs-osd.tr{top:calc(var(--vf-inset) + 10px)}
+.bfs-cine>.bfs-osd.bl,.bfs-cine>.bfs-osd.br{bottom:calc(var(--vf-inset) + 10px)}
+.bfs-cine>.bfs-osd.tl,.bfs-cine>.bfs-osd.bl{left:calc(var(--vf-inset) + var(--vf-len) + 24px)}
+.bfs-cine>.bfs-osd.tr,.bfs-cine>.bfs-osd.br{right:calc(var(--vf-inset) + var(--vf-len) + 24px)}
+/* Subject on one side of the frame: put the type on the open side */
+.bfs-cine-left,.bfs-cine-right{place-items:center stretch}
+.bfs-cine-left>.bfs-wrap,.bfs-cine-right>.bfs-wrap{max-width:var(--bfs-max);display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.bfs-cine-right>.bfs-wrap{align-items:flex-end;text-align:right}
+.bfs-cine-left>.bfs-wrap>*,.bfs-cine-right>.bfs-wrap>*{max-width:34rem}
+.bfs-cine-left .bfs-btns{justify-content:flex-start}.bfs-cine-right .bfs-btns{justify-content:flex-end}
+.bfs-cine-left::before{background:linear-gradient(90deg,color-mix(in srgb,var(--bfs-black) 82%,transparent) 30%,color-mix(in srgb,var(--bfs-black) 25%,transparent))}
+.bfs-cine-right::before{background:linear-gradient(270deg,color-mix(in srgb,var(--bfs-black) 82%,transparent) 30%,color-mix(in srgb,var(--bfs-black) 25%,transparent))}
+@media(max-width:700px){.bfs-cine>.bfs-osd.tr,.bfs-cine>.bfs-osd.bl,.bfs-cine .bfs-m-hide{display:none}
+  .bfs-cine{padding-block:5.25rem 4.5rem}
+  .bfs-cine-left>.bfs-wrap,.bfs-cine-right>.bfs-wrap{align-items:center;text-align:center}.bfs-cine-left .bfs-btns,.bfs-cine-right .bfs-btns{justify-content:center}}
+
+/* ---- Summary band (mid, directly under the header): 2–4 labeled lines that say what the page is.
+   Labels are 1–4 words; each line is one plain, complete sentence. Not a stat row. ---- */
+.bfs-summary>.bfs-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:var(--bfs-space-8)}
+.bfs-summary>.bfs-wrap>div{border-left:1px solid var(--bfs-line-strong);padding-left:var(--bfs-space-4);min-width:0}
+.bfs-summary .bfs-hud{font-weight:700;color:var(--bfs-text);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.35em}
+.bfs-summary p{margin:.4rem 0 0;font-size:var(--bfs-t-lg);line-height:1.35}
 
 /* ---- Media: any clickable image. Badge = what it is. Pill = what a click does. Marks lock on. ---- */
 .bfs-media{position:relative;display:block;width:100%;padding:0;border:0;background:var(--bfs-ink);cursor:pointer;overflow:hidden;text-align:left;--vf-inset:22px;--vf-len:20px;color:var(--bfs-bone)}

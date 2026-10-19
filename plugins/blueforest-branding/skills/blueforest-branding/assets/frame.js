@@ -117,6 +117,18 @@
         row('Dark (≤25%)', r.dark + '%', r.dark <= 25) + row('Light is largest', r.light >= Math.max(r.mid, r.dark) ? '✓' : '✗', r.light >= Math.max(r.mid, r.dark)) +
         row('Starts dark', r.startsDark ? '✓' : '✗', r.startsDark) + '</table>';
     }
+    // Header checks (v4.1): the first section under the nav needs an image or graphic, and the
+    // section after it shouldn't be a stat row. Warnings only; they don't fail r.ok.
+    var tops = all.filter(function (el) { return !el.classList.contains('bfs-nav'); });
+    var hero = tops[0], next = tops[1];
+    r.headerImage = !!(hero && hero.querySelector('img,video,picture,[data-bfs-art]'));
+    r.statsUnderHeader = !!(next && next.querySelector('.bfs-stats,.bfs-metabar'));
+    r.warnings = [];
+    if (!r.headerImage) r.warnings.push('Header has no image or graphic: use .bfs-cine with a project frame (references/imagery.md)');
+    if (r.statsUnderHeader) r.warnings.push('Stat row directly under the header: use a .bfs-summary band; keep numbers in the sections they belong to');
+    r.warnings.forEach(function (w) { console.warn('[BFS] ' + w); });
+    if (out) out.querySelector('table').insertAdjacentHTML('beforeend',
+      row('Header has an image', r.headerImage ? '✓' : '✗', r.headerImage) + row('No stat row under header', r.statsUnderHeader ? '✗' : '✓', !r.statsUnderHeader));
     r.placeholders = doc.querySelectorAll('img[src*="picsum.photos"],img[src^="REPLACE"]').length + (doc.body.innerText.match(/REPLACE/g) || []).length;
     if (r.placeholders) console.warn('[BFS] ' + r.placeholders + ' placeholder(s) left (REPLACE / picsum) — not shippable');
     if (!r.ok) console.warn('[BFS] Surface rules not met:', r);
