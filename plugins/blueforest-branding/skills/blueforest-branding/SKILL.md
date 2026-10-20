@@ -27,11 +27,11 @@ Copy the template, fill every `REPLACE`, and delete sections that don't apply. D
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
-<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 ```
 
-- **Always pin the version tag** (`@v4.1.0`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
+- **Always pin the version tag** (`@v4.1.1`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
 - For self-contained single files, inline `assets/frame.css` and `assets/frame.js`.
 - Add `&family=JetBrains+Mono:wght@400;600` to the font URL only when the page contains code.
 - Page-specific CSS builds on `--bfs-*` tokens. **No raw hex in page CSS.**
@@ -95,6 +95,15 @@ Cream and ice from v3 are retired on v4 pages.
 - Blue variant (`…_logo_blue.svg`) on light, only if a light nav is ever needed.
 - Never distort, recolor, or `filter:` the logo; keep ≥16px clear space. The SVGs are tightly cropped, so size them with `height`.
 
+### 8 · Page copy: plain sentences a client would say out loud
+Added 2026-10-20 after Ammon flagged header and intro text that read like a list of adjectives.
+- **Write complete sentences.** Every line has a subject and a verb. Write "Owners see a company they'd trust with their business", not "Warm, capable, trustworthy."
+- **Name the reader and the outcome.** Say who the page is for and what changes for them. Use "you" and the client's name; use "we" for BlueForest.
+- **Use concrete nouns and numbers:** the runtime, the date, the deliverable, the place. Cut words that could describe any company: *seamless, elevate, leverage, robust, cutting-edge, world-class, solutions, journey, unlock, empower*.
+- **Keep it short and active.** Header sentence 12 words or fewer. Summary lines 20 words or fewer. Section intros two sentences at most. No "not X, but Y" constructions, no rhetorical questions, no em-dash chains.
+- **Say each fact once.** If the header says it, the summary doesn't repeat it, and the body expands on it rather than restating it.
+- **Check before shipping:** read each header and summary line aloud. If it sounds like a brochure, or a client couldn't repeat it to a colleague, rewrite it. Copy Ammon sends as himself (emails, posts) follows the `ammon-voice` skill instead.
+
 ## Component quick reference
 Layout `.bfs-wrap` `.bfs-section(-tight)` `.bfs-sh` `.bfs-split(-even)` `.bfs-grid(-2)` `.bfs-doc` + `.bfs-toc` `.bfs-prose` ·
 Top `.bfs-nav` `.bfs-cine(-left/-right)` `.bfs-summary` `.bfs-m-hide` `.bfs-frame` `.bfs-osd.tl/.tr/.bl/.br` `.bfs-rec` `[data-tc]` `.bfs-play` · (`.bfs-hero` `.bfs-hero-head`: the v4.0 split hero, kept only for pages already built with it) ·
@@ -114,13 +123,14 @@ Icons: `<svg class="bfs-icon"><use href="#bfs-play|bfs-arrow|bfs-ext"/></svg>` (
 - ❌ Colored left/top border strips on cards; status shown as card color (use `.bfs-st`).
 - ❌ Red as a button or decoration. Gradients on buttons or surfaces (the only gradients are the legibility shades over images).
 - ❌ Raw hex in page CSS; `@main` stylesheet links on deployed pages; `filter` hacks on the logo.
+- ❌ Adjective-stack copy ("Warm, capable, trustworthy."), filler words from rule 8, the same fact repeated in header, summary and body.
 - ❌ Shipping with `REPLACE` markers or `picsum.photos` placeholders.
 
 ## Workflow
 1. Pick the page type and read its reference.
 2. Copy the template; fill content; delete what doesn't apply.
 3. Imagery: library first (`references/imagery.md`).
-4. Serve over http:// and check in the browser: `BFS.audit()` passes with no warnings, no horizontal scroll at 375px, hover states show tag, pill, and marks, and `grep -c REPLACE` returns 0.
+4. Serve over http:// and check in the browser: `BFS.audit()` passes with no warnings, no horizontal scroll at 375px, hover states show tag, pill, and marks, header and summary copy pass the rule 8 read-aloud check, and `grep -c REPLACE` returns 0.
 5. Reviewable pages embed the `?review` overlay (`~/.claude/rules/frontend.md`).
 
 ## Legacy (v3)

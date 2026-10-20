@@ -22,7 +22,7 @@ claude plugin update blueforest-branding@blueforest-branding
 - Blair is the system of record for the project registration; the System Building Dashboard row mirrors it.
 
 ## v4 "Frame" (2026-10-05)
-Chosen from the brand-refresh rounds (`../brand-refresh-2026/`, direction C2). Ships as **new files** (`assets/frame.css`, `assets/frame.js`, `templates/{pitch,landing,plan}.html`, `references/{pitch-sites,landing-pages,planning-sites,imagery}.md`). v3 `tokens.css`/`ui.css` are untouched because ~22 existing pages link them via `@main`. v4 links are **pinned to `@v4.1.0`**: bump the tag (and SKILL.md/templates/README URLs) on every release. The "Integrated Video Production" tagline is retired. The stills library is a separate effort; client imagery must **never** enter this public repo.
+Chosen from the brand-refresh rounds (`../brand-refresh-2026/`, direction C2). Ships as **new files** (`assets/frame.css`, `assets/frame.js`, `templates/{pitch,landing,plan}.html`, `references/{pitch-sites,landing-pages,planning-sites,imagery}.md`). v3 `tokens.css`/`ui.css` are untouched because ~22 existing pages link them via `@main`. v4 links are **pinned to `@v4.1.1`**: bump the tag (and SKILL.md/templates/README URLs) on every release. The "Integrated Video Production" tagline is retired. The stills library is a separate effort; client imagery must **never** enter this public repo.
 
 ## Status / What's Next
 1. **Design-system build in claude.ai/design** — bring the skill's brand rules in as the foundation; add UI-design mode + motion-graphics mode. (The driving goal, 2026-07-08.)
@@ -31,3 +31,5 @@ Chosen from the brand-refresh rounds (`../brand-refresh-2026/`, direction C2). S
 
 ## v4.1 header (2026-10-19)
 Every page opens with `.bfs-cine`: one image or graphic, kicker + h1 + one sentence, metadata in the four corner readouts, centered (`.bfs-cine-left/-right` when the subject sits to a side), crop via `--focal`. Directly under it a `.bfs-summary` band (2–4 labeled sentences, on a different surface from the next section), never a stat row. `BFS.audit()` warns on a header without an image or a stat row under it. The old split `.bfs-hero` stays in frame.css for pages built on v4.0. Rule lives in SKILL.md rule 2; mockups that led to it: `../brand-refresh-2026/hero-2026-10/`.
+
+4.1.1 (2026-10-20): SKILL.md rule 8 "Page copy" (plain complete sentences, no adjective stacks or filler words, read-aloud check); a four-line `.bfs-summary` goes 2×2 between 561 and 1100px instead of wrapping 3+1.
