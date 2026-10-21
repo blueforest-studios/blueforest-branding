@@ -129,7 +129,7 @@ Icons: `<svg class="bfs-icon"><use href="#bfs-play|bfs-arrow|bfs-ext"/></svg>` (
 ## Workflow
 1. Pick the page type and read its reference.
 2. Copy the template; fill content; delete what doesn't apply.
-3. Imagery: library first (`references/imagery.md`).
+3. Imagery: real frames first, then the library, then client assets; generate with `scripts/imagegen.sh` (ChatGPT plan via Codex) only for concepts, moods and backgrounds (`references/imagery.md`).
 4. Serve over http:// and check in the browser: `BFS.audit()` passes with no warnings, no horizontal scroll at 375px, hover states show tag, pill, and marks, header and summary copy pass the rule 8 read-aloud check, and `grep -c REPLACE` returns 0.
 5. Reviewable pages embed the `?review` overlay (`~/.claude/rules/frontend.md`).
 
