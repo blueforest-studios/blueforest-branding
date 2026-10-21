@@ -28,7 +28,7 @@ Pick a frame with the subject in the upper or middle third and room around it fo
 **Use it for:** concept and mood frames in pitches (label them `Concept` in the `.bfs-tag`), header images for internal plans with no project footage yet, backgrounds, textures, and illustrations for strategy and web pages.
 **Never for:** anything presented as BlueForest's real work, such as portfolio, BTS, team, or testimonial images; a client's people, products or locations as if photographed; or logos and text (the brand assets and HTML handle those).
 
-Prompt like a cinematographer: the subject, the setting, the light (time of day, direction), the lens and depth of field, and the mood. Ask for "no text" and room for centered type when it's a header. After generating, convert it like any other frame (about 1800px wide, JPG or WebP under ~400 KB, `sips -s format jpeg -s formatOptions 70 --resampleWidth 1800 in.png --out out.jpg`) and keep the PNG out of the deliverable. Generated images for client work stay in the client's folder, never in this public repo.
+Prompt like a cinematographer: the subject, the setting, the light (time of day, direction), the lens and depth of field, and the mood. Ask for "no text" and room for centered type when it's a header. After generating, convert it to JPG or WebP under ~400 KB at its native width (Codex returns about 1672×940 for 16:9; never upscale): `sips -s format jpeg -s formatOptions 70 in.png --out out.jpg` and keep the PNG out of the deliverable. Generated images for client work stay in the client's folder, never in this public repo.
 
 ## Library status
 
