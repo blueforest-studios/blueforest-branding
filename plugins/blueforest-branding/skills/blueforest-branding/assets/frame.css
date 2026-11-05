@@ -2,7 +2,7 @@
    BlueForest Studios — Design System v4 "Frame"
    Canonical source: github.com/blueforest-studios/blueforest-branding
    Link (pinned — never @main for deployed pages):
-   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
+   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
    Pair with frame.js (player, filters, timecode, surface audit).
    Fonts: Saira (all text) — add JetBrains Mono only for code.
 
@@ -256,7 +256,7 @@ pre code{background:none;border:0;padding:0;color:inherit}
 @media(max-width:560px){.bfs-reel{grid-template-columns:1fr}.bfs-tile,.bfs-tile.big,.bfs-tile.wide,.bfs-tile.full{grid-column:span 1}}
 
 /* ---- Ruled columns (services, practices, tiers, options) ---- */
-.bfs-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));border-top:1px solid var(--bfs-line-strong)}
+.bfs-cols{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);border-top:1px solid var(--bfs-line-strong)}
 .bfs-cols>*{padding:1.6rem 1.75rem 1.75rem;border-right:1px solid var(--bfs-line);display:flex;flex-direction:column}
 .bfs-cols>*:first-child{padding-left:0}
 .bfs-cols>*:last-child{border-right:0;padding-right:0}
@@ -266,7 +266,7 @@ pre code{background:none;border:0;padding:0;color:inherit}
 .bfs-cols .bfs-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.5rem}
 .bfs-price{font-size:var(--bfs-t-2xl);font-weight:700;font-stretch:87.5%;line-height:1;margin:.4rem 0 .8rem}
 .bfs-cols>.bfs-pick{background:var(--bfs-card);padding-inline:1.75rem!important}
-@media(max-width:860px){.bfs-cols{grid-template-columns:1fr}.bfs-cols>*{padding-inline:0;border-right:0;border-bottom:1px solid var(--bfs-line)}}
+@media(max-width:860px){.bfs-cols{grid-template-columns:1fr;grid-auto-flow:row}.bfs-cols>*{padding-inline:0;border-right:0;border-bottom:1px solid var(--bfs-line)}}
 .bfs-ticks{list-style:none;margin:.25rem 0 1.25rem;padding:0;font-size:var(--bfs-t-sm)}
 .bfs-ticks li{padding:.45rem 0;border-bottom:1px solid var(--bfs-line);display:flex;align-items:baseline;gap:.7rem}
 .bfs-ticks li::before{content:"";width:6px;height:6px;background:var(--bfs-blue);flex:none;transform:translateY(-1px)}

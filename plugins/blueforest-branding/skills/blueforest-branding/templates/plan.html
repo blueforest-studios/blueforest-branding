@@ -8,14 +8,15 @@
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="%23141112"/><path d="M5 11V5h6M21 5h6v6M27 21v6h-6M11 27H5v-6" fill="none" stroke="%23009DDC" stroke-width="3"/><circle cx="16" cy="16" r="3.5" fill="%23DB3E26"/></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
-<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 <style>/* Page-specific CSS only — build on --bfs-* tokens, never raw hex */
+.rv-zoom{display:none!important} /* review overlay Enlarge button: off on BlueForest pages (rule 9) */
 </style>
 </head>
 <body class="bfs-light">
 <!-- PLANNING / SYSTEM-OVERVIEW SITE (internal). Generated from a markdown source; the .md stays the source of truth.
-     Surface rhythm: dark (nav + .bfs-cine header) → mid (.bfs-summary) → light (doc) → mid (decisions / next steps) → dark footer.
+     Surface rhythm: dark (nav + .bfs-cine header) → light (doc) → mid (decisions / next steps) → dark footer.
      No stat row under the header: numbers stay in the sections they belong to. Long copy lives on light. -->
 
 <header class="bfs-nav bfs-dark">
@@ -30,8 +31,6 @@
   <img src="REPLACE: project frame or library still" alt="REPLACE">
   <span class="bfs-osd tl"><span class="bfs-hud">REPLACE SYS-YYYY-NNN</span></span>
   <span class="bfs-osd tr"><span class="bfs-hud">Updated REPLACE date</span></span>
-  <span class="bfs-osd bl"><span class="bfs-hud">Owner · REPLACE</span></span>
-  <span class="bfs-osd br"><span class="bfs-hud">Phase · REPLACE</span></span>
   <div class="bfs-wrap">
     <span class="bfs-hud bfs-accent">REPLACE: System plan</span>
     <h1>REPLACE: System name</h1>
@@ -39,15 +38,8 @@
   </div>
 </section>
 
-<section class="bfs-section-tight bfs-mid bfs-summary">
-  <div class="bfs-wrap">
-    <div><span class="bfs-hud">What it is</span><p>REPLACE: one plain sentence.</p></div>
-    <div><span class="bfs-hud">Who it's for</span><p>REPLACE: one plain sentence.</p></div>
-    <div><span class="bfs-hud">What's next</span><p>REPLACE: one plain sentence.</p></div>
-  </div>
-</section>
-
-<section class="bfs-section bfs-light" style="padding-top:var(--bfs-space-8)">
+<!-- No summary band by default: the header sentence says what it is and the closing section says what's next (SKILL.md rule 9). -->
+<section class="bfs-section bfs-light">
   <div class="bfs-wrap">
     <div class="bfs-doc">
       <nav class="bfs-toc" aria-label="On this page"><span class="bfs-hud">On this page</span><a href="#overview">Overview</a><a href="#components">Components</a><a href="#phases">Phases</a><a href="#risks">Risks</a><a href="#checklist">Checklist</a></nav>
@@ -55,7 +47,6 @@
         <div id="overview" class="bfs-prose">
           <h2 style="margin-top:0">Overview</h2>
           <p>REPLACE: Prose from the markdown. Keep paragraphs short; anything list-shaped becomes a list, table-shaped becomes a table.</p>
-          <div class="bfs-callout bfs-vf"><svg class="bfs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div><b>REPLACE: Key insight.</b><p>REPLACE: the one thing a reader must not miss.</p></div></div>
         </div>
 
         <h2 id="components" style="margin:var(--bfs-space-12) 0 var(--bfs-space-8)">Components</h2>
@@ -91,7 +82,7 @@
 
 <section class="bfs-section bfs-mid">
   <div class="bfs-wrap">
-    <div class="bfs-sh"><div><span class="bfs-hud">Next</span><h2>Decisions &amp; next steps</h2></div><p>REPLACE: what needs a decision from whom, by when.</p></div>
+    <div class="bfs-sh"><div><h2>Decisions &amp; next steps</h2></div><p>REPLACE: what needs a decision from whom, by when.</p></div>
     <div class="bfs-grid">
       <div class="bfs-card"><div class="bfs-card-head"><span class="bfs-chip"><svg class="bfs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span><h3>REPLACE: Decision</h3><span class="bfs-st bfs-st-live">Needs Ammon</span></div><p>REPLACE: options + recommendation.</p></div>
       <div class="bfs-card"><div class="bfs-card-head"><span class="bfs-chip"><svg class="bfs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M17.5 10v4"/></svg></span><h3>REPLACE: Next build step</h3><span class="bfs-st">Standby</span></div><p>REPLACE</p></div>
@@ -106,5 +97,6 @@
     <span>Internal · BlueForest Studios</span>
   </div>
 </footer>
+<!-- ?review overlay (~/.claude/rules/frontend.md): paste ~/.claude/skills/overview-site/templates/review_overlay_system.html here, set PREFIX/TITLE. Its Enlarge button stays hidden: .rv-zoom rule in <style>. -->
 </body>
 </html>

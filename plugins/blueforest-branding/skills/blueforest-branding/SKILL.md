@@ -27,11 +27,11 @@ Copy the template, fill every `REPLACE`, and delete sections that don't apply. D
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
-<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 ```
 
-- **Always pin the version tag** (`@v4.3.0`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
+- **Always pin the version tag** (`@v4.3.1`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
 - For self-contained single files, inline `assets/frame.css` and `assets/frame.js`.
 - Add `&family=JetBrains+Mono:wght@400;600` to the font URL only when the page contains code.
 - Page-specific CSS builds on `--bfs-*` tokens. **No raw hex in page CSS.**

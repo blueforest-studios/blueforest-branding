@@ -22,7 +22,7 @@ claude plugin update blueforest-branding@blueforest-branding
 - Blair is the system of record for the project registration; the System Building Dashboard row mirrors it.
 
 ## v4 "Frame" (2026-10-05)
-Chosen from the brand-refresh rounds (`../brand-refresh-2026/`, direction C2). Ships as **new files** (`assets/frame.css`, `assets/frame.js`, `templates/{pitch,landing,plan}.html`, `references/{pitch-sites,landing-pages,planning-sites,imagery}.md`). v3 `tokens.css`/`ui.css` are untouched because ~22 existing pages link them via `@main`. v4 links are **pinned to `@v4.3.0`**: bump the tag (and SKILL.md/templates/README URLs) on every release. The "Integrated Video Production" tagline is retired. The stills library is a separate effort; client imagery must **never** enter this public repo.
+Chosen from the brand-refresh rounds (`../brand-refresh-2026/`, direction C2). Ships as **new files** (`assets/frame.css`, `assets/frame.js`, `templates/{pitch,landing,plan}.html`, `references/{pitch-sites,landing-pages,planning-sites,imagery}.md`). v3 `tokens.css`/`ui.css` are untouched because ~22 existing pages link them via `@main`. v4 links are **pinned to `@v4.3.1`**: bump the tag (and SKILL.md/templates/README URLs) on every release. The "Integrated Video Production" tagline is retired. The stills library is a separate effort; client imagery must **never** enter this public repo.
 
 ## Status / What's Next
 1. **Design-system build in claude.ai/design** — bring the skill's brand rules in as the foundation; add UI-design mode + motion-graphics mode. (The driving goal, 2026-07-08.)
@@ -34,6 +34,8 @@ Every page opens with `.bfs-cine`: one image or graphic, kicker + h1 + one sente
 
 4.1.1 (2026-10-20): SKILL.md rule 8 "Page copy" (plain complete sentences, no adjective stacks or filler words, read-aloud check); a four-line `.bfs-summary` goes 2×2 between 561 and 1100px instead of wrapping 3+1.
 
-4.2.0 (2026-10-21): `scripts/imagegen.sh` generates images through Codex's built-in image tool on the ChatGPT plan (no API key). Rules in `references/imagery.md` → "Generated images": concepts, moods, backgrounds only, never presented as real BlueForest or client work. Plugin-only release: frame.css/js unchanged, so pages stay pinned to `@v4.3.0`.
+4.2.0 (2026-10-21): `scripts/imagegen.sh` generates images through Codex's built-in image tool on the ChatGPT plan (no API key). Rules in `references/imagery.md` → "Generated images": concepts, moods, backgrounds only, never presented as real BlueForest or client work. Plugin-only release: frame.css/js unchanged, so pages stay pinned to `@v4.3.1`.
 
 4.3.0 (2026-11-05): SKILL.md rule 9 "Restraint" from three BlueGift page review rounds: a text budget (no kickers over section headings, one header button, two corner readouts, summary band only when it adds facts), one path per action, a page-wide cut pass, wider gutters (`--bfs-pad` now `clamp(1.5rem,9vw,10rem)` in frame.css), matching above/below padding, bottom-aligned card buttons. The "airy layouts" anti-pattern became "cramped pages" + "element pile-ups". Pages pinned to `@v4.1.1` keep the old gutter.
+
+4.3.1 (2026-11-05): templates trimmed to rule 9. Pitch: no kicker, one header button, two readouts (client; code + date), no summary band, no section kickers, 15-minute call link. Landing: two readouts, no section kickers or "Practice N" labels, no duplicate discovery-call link, no padding-top overrides. Plan: two readouts, no summary band, one callout (risks), no section kicker. All three carry a `?review` overlay placeholder and hide its Enlarge button. frame.css: `.bfs-cols` stays one even row above 860px (the wider gutters made auto-fit wrap three columns to 2+1).
