@@ -10,7 +10,7 @@ Internal pages generated from a markdown plan: system designs (SYS-* projects), 
 |---|---|---|
 | Nav | dark | Logo + one overall `.bfs-st` status |
 | Header | dark | `.bfs-cine`: a frame from the project (or a library still), kicker naming the page type (`System plan`, `Creative brief`, `Weekly review`), `h1`, one summary sentence. Code, updated date, owner and phase go in the four corner readouts. See SKILL.md rule 2. |
-| Summary | mid | `.bfs-summary`: 2–4 labeled lines, for example What it is · Who it's for · What's next. Full sentences. |
+| Summary (optional) | mid | `.bfs-summary`: 2–4 labeled lines, for example What it is · Who it's for · What's next. Full sentences. Only when the lines say something the header and sections don't (SKILL.md rule 9); otherwise skip it. |
 | Body | light | `.bfs-doc` = sticky `.bfs-toc` + content: `.bfs-prose`, `.bfs-grid` of `.bfs-card`s, `.bfs-table`, `.bfs-callout`, `.bfs-checklist` |
 | Decisions / next steps | mid | `.bfs-grid` of white `.bfs-card`s (cards automatically turn white on mid) |
 | Footer | dark | Project code · source `.md` path |

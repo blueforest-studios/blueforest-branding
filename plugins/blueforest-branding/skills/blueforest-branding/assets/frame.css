@@ -2,7 +2,7 @@
    BlueForest Studios — Design System v4 "Frame"
    Canonical source: github.com/blueforest-studios/blueforest-branding
    Link (pinned — never @main for deployed pages):
-   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.1.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
+   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
    Pair with frame.js (player, filters, timecode, surface audit).
    Fonts: Saira (all text) — add JetBrains Mono only for code.
 
@@ -46,7 +46,7 @@
   --bfs-space-6:1.5rem; --bfs-space-8:2rem; --bfs-space-12:3rem; --bfs-space-16:4rem;
   --bfs-r:3px;
   --bfs-gap:6px;                              /* image grids */
-  --bfs-pad:clamp(1rem,3.2vw,2.5rem);         /* page gutter */
+  --bfs-pad:clamp(1.5rem,9vw,10rem);          /* page gutter: roomy on purpose (SKILL.md rule 9) */
   --bfs-max:1600px;
 
   /* Semantic (flipped by surfaces) — default = light */
