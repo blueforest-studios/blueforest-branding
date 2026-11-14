@@ -2,12 +2,12 @@
    BlueForest Studios — Design System v4 "Frame"
    Canonical source: github.com/blueforest-studios/blueforest-branding
    Link (pinned — never @main for deployed pages):
-   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
+   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
    Pair with frame.js (player, filters, timecode, surface audit).
    Fonts: Saira (all text) — add JetBrains Mono only for code.
 
    The rules this file encodes:
-   - Three surfaces: .bfs-light (default, largest), .bfs-mid (warm-gray breaks),
+   - Three surfaces: .bfs-light (default, largest), .bfs-mid (cool-gray breaks),
      .bfs-dark (top of page + footer; titles/imagery only; ≤25% of page height).
    - Action language: ▶ plays in a player · → opens a page · ↗ leaves the site.
    - Viewfinder marks (.bfs-vf) lock onto what is clickable or what matters.
@@ -23,8 +23,9 @@
   --bfs-bone:#ECE9E6;        /* Type on dark */
   --bfs-silver:#B6B8BA;      /* Pantone 422 — muted on dark */
   --bfs-grey:#5E6468;        /* Muted on light */
-  --bfs-warm:#E9E7E4;        /* Mid surface */
-  --bfs-paper:#F4F3F1;       /* Card fill on light */
+  --bfs-cool:#EBEDEF;        /* Mid surface: neutral cool gray (v4.4; the warm #E9E7E4 read as beige) */
+  --bfs-warm:var(--bfs-cool); /* deprecated alias, kept so page CSS that names it still works */
+  --bfs-paper:#F5F6F7;       /* Card fill on light */
   --bfs-white:#FFFFFF;
   --bfs-tally:#DB3E26;       /* Brand red — REC light + errors only. Never decoration, never a CTA */
   --bfs-ok:#1F7A4D;          /* Success text only */
@@ -58,7 +59,7 @@
 
 /* ---- Surfaces: every top-level section declares exactly one ---- */
 .bfs-light{--bfs-bg:var(--bfs-white);--bfs-text:var(--bfs-ink);--bfs-muted:var(--bfs-grey);--bfs-accent:var(--bfs-blue-text);--bfs-line:color-mix(in srgb,var(--bfs-ink) 12%,transparent);--bfs-line-strong:color-mix(in srgb,var(--bfs-ink) 30%,transparent);--bfs-card:var(--bfs-paper)}
-.bfs-mid{--bfs-bg:var(--bfs-warm);--bfs-text:var(--bfs-ink);--bfs-muted:#53585B;--bfs-accent:#00719F;--bfs-line:color-mix(in srgb,var(--bfs-ink) 14%,transparent);--bfs-line-strong:color-mix(in srgb,var(--bfs-ink) 32%,transparent);--bfs-card:var(--bfs-white)}
+.bfs-mid{--bfs-bg:var(--bfs-cool);--bfs-text:var(--bfs-ink);--bfs-muted:#53585B;--bfs-accent:#00719F;--bfs-line:color-mix(in srgb,var(--bfs-ink) 14%,transparent);--bfs-line-strong:color-mix(in srgb,var(--bfs-ink) 32%,transparent);--bfs-card:var(--bfs-white)}
 .bfs-dark{--bfs-bg:var(--bfs-black);--bfs-text:var(--bfs-bone);--bfs-muted:var(--bfs-silver);--bfs-accent:var(--bfs-blue);--bfs-line:color-mix(in srgb,var(--bfs-bone) 13%,transparent);--bfs-line-strong:color-mix(in srgb,var(--bfs-bone) 28%,transparent);--bfs-card:var(--bfs-ink)}
 .bfs-light,.bfs-mid,.bfs-dark{background:var(--bfs-bg);color:var(--bfs-text)}
 
@@ -127,8 +128,9 @@ pre code{background:none;border:0;padding:0;color:inherit}
 
 /* ---- Nav ---- */
 .bfs-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bfs-bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--bfs-line)}
-.bfs-nav .bfs-wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:2rem}
-.bfs-nav img{height:42px;width:auto}
+.bfs-nav .bfs-wrap{display:flex;align-items:center;justify-content:space-between;height:88px;gap:2rem}
+.bfs-nav img{height:56px;width:auto} /* v4.4: was 42px, read 20-40% too small */
+@media(max-width:560px){.bfs-nav .bfs-wrap{height:72px}.bfs-nav img{height:46px}}
 .bfs-nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0;align-items:center}
 .bfs-nav ul a:not(.bfs-btn){font-weight:500;font-size:var(--bfs-t-sm);color:var(--bfs-muted);transition:color .15s}
 .bfs-nav ul a:not(.bfs-btn):hover,.bfs-nav ul a[aria-current]{color:var(--bfs-text)}
@@ -173,8 +175,8 @@ pre code{background:none;border:0;padding:0;color:inherit}
   .bfs-cine{padding-block:5.25rem 4.5rem}
   .bfs-cine-left>.bfs-wrap,.bfs-cine-right>.bfs-wrap{align-items:center;text-align:center}.bfs-cine-left .bfs-btns,.bfs-cine-right .bfs-btns{justify-content:center}}
 
-/* ---- Summary band (mid, directly under the header): 2–4 labeled lines that say what the page is.
-   Labels are 1–4 words; each line is one plain, complete sentence. Not a stat row. ---- */
+/* ---- Summary band: RETIRED in v4.4 (Ammon, 2026-11-14). Never add one to a new page; BFS.audit() warns.
+   Kept only so pages already built with it don't break. ---- */
 .bfs-summary>.bfs-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:var(--bfs-space-8)}
 .bfs-summary>.bfs-wrap>div{border-left:1px solid var(--bfs-line-strong);padding-left:var(--bfs-space-4);min-width:0}
 .bfs-summary .bfs-hud{font-weight:700;color:var(--bfs-text);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.35em}
@@ -262,6 +264,7 @@ pre code{background:none;border:0;padding:0;color:inherit}
 .bfs-cols>*:last-child{border-right:0;padding-right:0}
 .bfs-cols .bfs-top{display:flex;justify-content:space-between;align-items:center;min-height:22px}
 .bfs-cols h3{margin:.8rem 0 .55rem}
+.bfs-cols>*>.bfs-still:first-child{height:clamp(150px,13vw,210px);margin-bottom:.4rem} /* fixed height: columns differ in width, headings must line up */
 .bfs-cols p{color:var(--bfs-muted);font-size:var(--bfs-t-sm)}
 .bfs-cols .bfs-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.5rem}
 .bfs-price{font-size:var(--bfs-t-2xl);font-weight:700;font-stretch:87.5%;line-height:1;margin:.4rem 0 .8rem}
@@ -287,6 +290,18 @@ pre code{background:none;border:0;padding:0;color:inherit}
 /* ---- Split: intro column + content (call sheet layout) ---- */
 .bfs-split{display:grid;grid-template-columns:.8fr 1.6fr;gap:clamp(1.5rem,4vw,4rem);align-items:start}
 .bfs-split-even{grid-template-columns:1fr 1fr}
+/* ---- Diagrams (v4.4, rule 10): inline SVG flows, timelines and part maps drawn with tokens ----
+   <svg class="bfs-diagram" viewBox=…> with <rect class="bx">, <path class="ln"> (blue path), <text> / <text class="sm"> */
+.bfs-diagram{display:block;width:100%;height:auto;font-family:inherit;overflow:visible}
+.bfs-diagram .bx{fill:var(--bfs-card);stroke:var(--bfs-line-strong);stroke-width:1.5}
+.bfs-diagram .bx-on{fill:var(--bfs-blue);stroke:var(--bfs-blue)}
+.bfs-diagram .ln{fill:none;stroke:var(--bfs-blue);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.bfs-diagram text{fill:var(--bfs-text);font-size:24px;font-weight:700;font-stretch:87.5%}
+.bfs-diagram text.sm{fill:var(--bfs-muted);font-size:17px;font-weight:500;font-stretch:100%}
+.bfs-diagram .bx-on+text,.bfs-diagram text.on{fill:var(--bfs-white)}
+figure{margin:0}figure:has(>.bfs-diagram){overflow-x:auto}
+@media(max-width:700px){.bfs-diagram{min-width:540px}} /* phones: scroll the diagram sideways rather than shrink its text below ~12px */
+figcaption{margin-top:.75rem;color:var(--bfs-muted);font-size:var(--bfs-t-sm)}
 .bfs-split>*,.bfs-doc>*,.bfs-cta>*{min-width:0}   /* let tables scroll inside instead of widening the page */
 .bfs-split>div:first-child p{color:var(--bfs-muted);max-width:40ch}
 @media(max-width:900px){.bfs-split,.bfs-split-even{grid-template-columns:1fr}}
@@ -375,7 +390,7 @@ pre code{background:none;border:0;padding:0;color:inherit}
 .bfs-footer{padding-block:1.75rem}
 .bfs-footer .bfs-wrap{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;font-size:var(--bfs-t-sm);color:var(--bfs-muted)}
 .bfs-footer .bfs-lock{display:flex;align-items:center;gap:1rem}
-.bfs-footer img{height:34px;width:auto}
+.bfs-footer img{height:46px;width:auto}
 .bfs-footer nav{display:flex;gap:1.5rem;flex-wrap:wrap}
 .bfs-footer nav a:hover{color:var(--bfs-text)}
 

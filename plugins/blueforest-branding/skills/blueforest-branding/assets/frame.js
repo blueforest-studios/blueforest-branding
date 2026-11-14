@@ -121,14 +121,39 @@
     // section after it shouldn't be a stat row. Warnings only; they don't fail r.ok.
     var tops = all.filter(function (el) { return !el.classList.contains('bfs-nav'); });
     var hero = tops[0], next = tops[1];
+    var VIS = 'img,video,picture,canvas,iframe,figure,[data-bfs-art],.bfs-media,svg:not(.bfs-icon)';
+    var isVis = function (el) { var b = el.getBoundingClientRect(); return b.width >= 120 && b.height >= 80; };
     r.headerImage = !!(hero && hero.querySelector('img,video,picture,[data-bfs-art]'));
     r.statsUnderHeader = !!(next && next.querySelector('.bfs-stats,.bfs-metabar'));
+    // v4.4: no summary band, and no text-only strip of any kind between the header and the content
+    r.textBandUnderHeader = !!(next && !next.classList.contains('bfs-footer') && (next.matches('.bfs-summary') || next.querySelector('.bfs-summary') ||
+      (next.offsetHeight < innerHeight * 0.5 && ![].some.call(next.querySelectorAll(VIS), isVis))));
+    // v4.4 text budget + picture share, measured on the content between header and footer
+    var body = tops.slice(1).filter(function (el) { return !el.classList.contains('bfs-footer') && el.tagName !== 'FOOTER'; });
+    var words = function (el) { return (el.innerText.match(/\S+/g) || []).length; };
+    r.words = body.reduce(function (n, el) { return n + words(el); }, 0);
+    r.wordySections = body.filter(function (el) { return words(el) > 150; }).map(function (el) { return (el.querySelector('h2,h3') || el).innerText.slice(0, 40); });
+    var spans = [], h = 0, y0 = scrollY;
+    body.forEach(function (el) {
+      var b = el.getBoundingClientRect(); h += b.height;
+      [].forEach.call(el.querySelectorAll(VIS), function (v) { if (isVis(v)) { var vb = v.getBoundingClientRect(); spans.push([vb.top + y0, vb.bottom + y0]); } });
+    });
+    spans.sort(function (a, b) { return a[0] - b[0]; });
+    var cov = 0, end = -Infinity;
+    spans.forEach(function (sp) { if (sp[1] > end) { cov += sp[1] - Math.max(sp[0], end); end = sp[1]; } });
+    r.pictureShare = h ? Math.round(cov / h * 100) : 0; // % of the scroll below the header that has a picture beside or behind it
     r.warnings = [];
     if (!r.headerImage) r.warnings.push('Header has no image or graphic: use .bfs-cine with a project frame (references/imagery.md)');
-    if (r.statsUnderHeader) r.warnings.push('Stat row directly under the header: use a .bfs-summary band; keep numbers in the sections they belong to');
+    if (r.statsUnderHeader) r.warnings.push('Stat row directly under the header: keep numbers in the sections they belong to');
+    if (r.textBandUnderHeader) r.warnings.push('Text-only band under the header (summary band or labeled columns): delete it and start the content (rule 2)');
+    if (r.pictureShare < 30) r.warnings.push('Pictures cover ' + r.pictureShare + '% of the page below the header (aim for 40%, floor 30%): add frames, diagrams or screenshots, cut copy (rule 10)');
+    if (r.words > 700) r.warnings.push(r.words + ' words below the header (budget 700): move detail to the source doc and link it (rule 10)');
+    if (r.wordySections.length) r.warnings.push('Sections over 150 words: ' + r.wordySections.join(' · '));
     r.warnings.forEach(function (w) { console.warn('[BFS] ' + w); });
     if (out) out.querySelector('table').insertAdjacentHTML('beforeend',
-      row('Header has an image', r.headerImage ? '✓' : '✗', r.headerImage) + row('No stat row under header', r.statsUnderHeader ? '✗' : '✓', !r.statsUnderHeader));
+      row('Header has an image', r.headerImage ? '✓' : '✗', r.headerImage) + row('No stat row under header', r.statsUnderHeader ? '✗' : '✓', !r.statsUnderHeader) +
+      row('No text band under header', r.textBandUnderHeader ? '✗' : '✓', !r.textBandUnderHeader) +
+      row('Pictures (≥30%, aim 40%)', r.pictureShare + '%', r.pictureShare >= 30) + row('Words (≤700)', r.words, r.words <= 700));
     r.placeholders = doc.querySelectorAll('img[src*="picsum.photos"],img[src^="REPLACE"]').length + (doc.body.innerText.match(/REPLACE/g) || []).length;
     if (r.placeholders) console.warn('[BFS] ' + r.placeholders + ' placeholder(s) left (REPLACE / picsum) — not shippable');
     if (!r.ok) console.warn('[BFS] Surface rules not met:', r);

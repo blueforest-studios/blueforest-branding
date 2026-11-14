@@ -8,8 +8,8 @@
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="%23141112"/><path d="M5 11V5h6M21 5h6v6M27 21v6h-6M11 27H5v-6" fill="none" stroke="%23009DDC" stroke-width="3"/><circle cx="16" cy="16" r="3.5" fill="%23DB3E26"/></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
-<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.3.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 <style>/* Page-specific CSS only — build on --bfs-* tokens, never raw hex */
 .rv-zoom{display:none!important} /* review overlay Enlarge button: off on BlueForest pages (rule 9) */
 </style>
@@ -17,7 +17,9 @@
 <body class="bfs-light">
 <!-- PLANNING / SYSTEM-OVERVIEW SITE (internal). Generated from a markdown source; the .md stays the source of truth.
      Surface rhythm: dark (nav + .bfs-cine header) → light (doc) → mid (decisions / next steps) → dark footer.
-     No stat row under the header: numbers stay in the sections they belong to. Long copy lives on light. -->
+     Nothing between the header and the doc: no summary band, no labeled text columns, no stat row (SKILL.md rule 2).
+     Pictures over paragraphs (rule 10): every section carries a diagram, frame or screenshot; ≤700 words below the header.
+     This page is the picture-level view of the source .md: decisions, flow, parts, next steps. Detail stays in the .md. -->
 
 <header class="bfs-nav bfs-dark">
   <div class="bfs-wrap">
@@ -38,18 +40,28 @@
   </div>
 </section>
 
-<!-- No summary band by default: the header sentence says what it is and the closing section says what's next (SKILL.md rule 9). -->
+<!-- Content starts right under the header. Never a summary band (retired 2026-11-14). -->
 <section class="bfs-section bfs-light">
   <div class="bfs-wrap">
     <div class="bfs-doc">
-      <nav class="bfs-toc" aria-label="On this page"><span class="bfs-hud">On this page</span><a href="#overview">Overview</a><a href="#components">Components</a><a href="#phases">Phases</a><a href="#risks">Risks</a><a href="#checklist">Checklist</a></nav>
+      <nav class="bfs-toc" aria-label="On this page"><span class="bfs-hud">On this page</span><a href="#overview">Overview</a><a href="#components">Components</a><a href="#phases">Phases</a><a href="#risks">Risks</a></nav>
       <div>
-        <div id="overview" class="bfs-prose">
-          <h2 style="margin-top:0">Overview</h2>
-          <p>REPLACE: Prose from the markdown. Keep paragraphs short; anything list-shaped becomes a list, table-shaped becomes a table.</p>
-        </div>
+        <figure id="overview">
+          <h2 style="margin:0 0 var(--bfs-space-8)">REPLACE: How it works</h2>
+          <!-- The system's flow as a diagram, not prose. Add or remove steps; keep labels to 1–3 words + one short sub-line. -->
+          <svg class="bfs-diagram" viewBox="0 0 760 240" role="img" aria-label="REPLACE: one-sentence description of the flow">
+            <path class="ln" d="M160 120H196M360 120H396M560 120H596M188 111l9 9-9 9M388 111l9 9-9 9M588 111l9 9-9 9"/>
+            <rect class="bx" x="0" y="50" width="160" height="140" rx="4"/><text x="80" y="115" text-anchor="middle">REPLACE</text><text class="sm" x="80" y="145" text-anchor="middle">REPLACE when</text>
+            <rect class="bx" x="200" y="50" width="160" height="140" rx="4"/><text x="280" y="115" text-anchor="middle">REPLACE</text><text class="sm" x="280" y="145" text-anchor="middle">REPLACE</text>
+            <rect class="bx" x="400" y="50" width="160" height="140" rx="4"/><text x="480" y="115" text-anchor="middle">REPLACE</text><text class="sm" x="480" y="145" text-anchor="middle">REPLACE</text>
+            <rect class="bx bx-on" x="600" y="50" width="160" height="140" rx="4"/><text class="on" x="680" y="115" text-anchor="middle">REPLACE</text><text class="sm on" x="680" y="145" text-anchor="middle">REPLACE result</text>
+          </svg>
+          <figcaption>REPLACE: one line, or delete.</figcaption>
+        </figure>
 
         <h2 id="components" style="margin:var(--bfs-space-12) 0 var(--bfs-space-8)">Components</h2>
+        <!-- Show the system: a screenshot or mockup of it (in .bfs-browser for web UIs), a project frame, or a generated concept image (references/imagery.md). -->
+        <div class="bfs-still" style="aspect-ratio:16/8;margin-bottom:var(--bfs-space-8)"><img src="REPLACE: screenshot, mockup or concept image of the system" alt="REPLACE"></div>
         <div class="bfs-grid">
           <div class="bfs-card"><div class="bfs-card-head"><span class="bfs-chip"><svg class="bfs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span><h3>REPLACE: Data store</h3><span class="bfs-st bfs-st-done">Done</span></div><p>REPLACE: what it is, what it holds.</p></div>
           <div class="bfs-card"><div class="bfs-card-head"><span class="bfs-chip"><svg class="bfs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M17.5 10v4"/></svg></span><h3>REPLACE: Connector</h3><span class="bfs-st bfs-st-live">In progress</span></div><p>REPLACE</p></div>
@@ -57,24 +69,19 @@
         </div>
 
         <h2 id="phases" style="margin:var(--bfs-space-12) 0 var(--bfs-space-8)">Phases</h2>
-        <div class="bfs-table-wrap"><table class="bfs-table">
-          <thead><tr><th>Phase</th><th>When</th><th>Scope</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td><b>REPLACE</b></td><td class="bfs-when">REPLACE</td><td>REPLACE</td><td><span class="bfs-st bfs-st-done">Done</span></td></tr>
-            <tr><td><b>REPLACE</b></td><td class="bfs-when">REPLACE</td><td>REPLACE</td><td><span class="bfs-st bfs-st-live">In progress</span></td></tr>
-            <tr><td><b>REPLACE</b></td><td class="bfs-when">REPLACE</td><td>REPLACE</td><td><span class="bfs-st">Standby</span></td></tr>
-          </tbody>
-        </table></div>
+        <!-- A schedule is a timeline, not a table (rule 10). Done = .bx, current = .bx-on, upcoming = .bx with a dashed stroke. -->
+        <figure>
+        <svg class="bfs-diagram" viewBox="0 0 760 220" role="img" aria-label="REPLACE: phases and dates">
+          <path class="ln" d="M0 40H760"/>
+          <rect class="bx" x="0" y="70" width="240" height="120" rx="4"/><text x="20" y="115">REPLACE phase</text><text class="sm" x="20" y="145">REPLACE dates · Done</text>
+          <rect class="bx bx-on" x="260" y="70" width="240" height="120" rx="4"/><text class="on" x="280" y="115">REPLACE phase</text><text class="sm on" x="280" y="145">REPLACE dates · Now</text>
+          <rect class="bx" x="520" y="70" width="240" height="120" rx="4" stroke-dasharray="6 6"/><text x="540" y="115">REPLACE phase</text><text class="sm" x="540" y="145">REPLACE dates · Next</text>
+          <circle cx="120" cy="40" r="7" fill="var(--bfs-blue)"/><circle cx="380" cy="40" r="10" fill="var(--bfs-blue)"/><circle cx="640" cy="40" r="7" fill="var(--bfs-card)" stroke="var(--bfs-blue)" stroke-width="2.5"/>
+        </svg>
+        </figure>
 
         <h2 id="risks" style="margin:var(--bfs-space-12) 0 var(--bfs-space-8)">Risks</h2>
         <div class="bfs-callout bfs-callout-warn bfs-vf"><svg class="bfs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg><div><b>REPLACE: Risk.</b><p>REPLACE: impact, and the proposed mitigation (never a problem without a solution).</p></div></div>
-
-        <h2 id="checklist" style="margin:var(--bfs-space-12) 0 var(--bfs-space-8)">Checklist</h2>
-        <ul class="bfs-checklist">
-          <li><span>REPLACE task<small>REPLACE detail</small></span><span class="bfs-st bfs-st-done">Done</span></li>
-          <li><span>REPLACE task<small>REPLACE detail</small></span><span class="bfs-st bfs-st-live">In progress</span></li>
-          <li><span>REPLACE task<small>REPLACE detail</small></span><span class="bfs-st bfs-st-err">Blocked</span></li>
-        </ul>
       </div>
     </div>
   </div>

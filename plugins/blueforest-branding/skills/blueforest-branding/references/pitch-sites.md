@@ -9,14 +9,13 @@ Client-facing proposals sent as a private link (Client Pitch Kit). One client, o
 | # | Section | Surface | Notes |
 |---|---|---|---|
 | 1 | Nav + header | dark | `.bfs-cine` (SKILL.md rule 2). The image is a concept still or a frame from their footage. No kicker: the headline names *their* outcome in their words, then one sentence and one button (Approve & book). Two corner readouts: `For <Client>` and the project code with the date. |
-| 2 | Summary (omitted by default) | light | Skip it: the investment section already carries timeline and price. Add a `.bfs-summary` only for a fact that appears nowhere else (SKILL.md rule 9). No stat cards. |
-| 3 | The problem | mid | `.bfs-split`: their problem in their language + `.bfs-ticks` symptoms + one `.bfs-callout` insight. |
-| 4 | The approach | light | Treatment frames as `.bfs-still` tiles in a `.bfs-reel`, captioned "Frame 01 — …". |
-| 5 | Production plan | mid | Call-sheet `.bfs-table` (Phase · When · What happens · You get). |
-| 6 | Investment | light | `.bfs-cols` tiers, `.bfs-price`; one `.bfs-pick` with a `.bfs-new` "Recommended" tag. |
-| 7 | Proof | mid | `.bfs-subtitle` testimonial from the most similar past client (plays the interview) + `.bfs-logos`. |
-| 8 | Next step | light | `.bfs-cta`: date-anchored headline + a `.bfs-form` panel holding the single approve/book button (e-sign or TidyCal link). |
-| 9 | Footer | dark | "Prepared for <Client> · <Project ID>". |
+| 2 | The problem | mid | `.bfs-split`: their problem in their language + `.bfs-ticks` symptoms, beside a picture of the problem (their current site, a frame of their current video, or a concept image) and one `.bfs-callout` insight. Starts right under the header: no summary band (SKILL.md rule 2). |
+| 3 | The approach | light | Treatment frames as `.bfs-still` tiles in a `.bfs-reel`, captioned "Frame 01 — …". |
+| 4 | Production plan | mid | Call-sheet `.bfs-table` (Phase · When · What happens · You get). |
+| 5 | Investment | light | `.bfs-cols` tiers, `.bfs-price`; one `.bfs-pick` with a `.bfs-new` "Recommended" tag. |
+| 6 | Proof | mid | `.bfs-subtitle` testimonial from the most similar past client (plays the interview) + `.bfs-logos`. |
+| 7 | Next step | light | `.bfs-cta`: date-anchored headline + a `.bfs-form` panel holding the single approve/book button (e-sign or TidyCal link). |
+| 8 | Footer | dark | "Prepared for <Client> · <Project ID>". |
 
 Drop sections that don't apply, but keep the light/mid alternation and run `BFS.audit()`.
 

@@ -10,7 +10,7 @@ Public pages that sell BlueForest's practices (Video, Web, Marketing strategy): 
 |---|---|---|
 | Nav + header | dark | `.bfs-cine` (SKILL.md rule 2) on the reel's best frame: practices kicker, outcome headline, one sentence, Start a project + "Play reel · m:ss" (`data-play`). Two corner readouts: REC + live `[data-tc]` timecode, and the reel label. Section headings carry no kicker (SKILL.md rule 9). No stat bar under it; clients appear in Proof. |
 | Work | light | `.bfs-reel` of `.bfs-tile`s + `.bfs-tabs[data-filter]` (All · Video · Web · Strategy) |
-| Practices | mid | `.bfs-cols` ×3 with `.bfs-ticks` and a "Typical · n wks" HUD foot; `.bfs-new` on Web/Strategy |
+| Practices | mid | `.bfs-cols` ×3, each led by a `.bfs-still`, then `.bfs-ticks` (three) and a "Typical · n wks" HUD foot; `.bfs-new` on Web/Strategy |
 | Process | light | `.bfs-split` + call-sheet `.bfs-table` |
 | Proof | mid | `.bfs-subtitle` testimonial + `.bfs-logos` |
 | Contact | light | `.bfs-cta` + `.bfs-form` |
