@@ -29,10 +29,11 @@ Long copy always sits on **light**. Mid holds one short closing block. Dark is t
 
 ## Turning markdown into the page
 
-**The page is the picture-level view; the markdown keeps the detail** (SKILL.md rule 10). Show the decisions, the flow, the parts and what happens next, at most ~700 words below the header, and link the source `.md` once (footer). Don't transcribe every paragraph and table.
+**The page is the picture-level view** (SKILL.md rule 10). Show the decisions, the flow, the parts and what happens next, at most ~700 visible words below the header. Supporting detail folds into `.bfs-more` collapsibles; link the source `.md` once (footer) for the rest.
 
 - The main flow (weekly run, pipeline, user journey) becomes a `.bfs-diagram` (inline SVG; the template's How it works figure). Steps, sources and tiers become labeled boxes, not numbered paragraphs.
 - Each `##` section kept on the page carries a visual: a diagram, a screenshot, a project frame, or a generated concept image.
+- Paragraphs a reader may still want (reasoning, full source lists, edge cases, failure handling, testing notes) go in `.bfs-more` collapsibles under the visual they explain, closed by default, one per topic. The summary names the topic (`Failure handling · 1 min`). Decisions, dates, prices and next steps stay open.
 
 - `##` sections become `id`'d blocks listed in the TOC.
 - Bulleted lists of things (components, workstreams) become a card grid with one-line bodies. Lists of steps become a diagram, or a `.bfs-checklist` when they're tasks with status.

@@ -2,7 +2,7 @@
    BlueForest Studios — Design System v4 "Frame"
    Canonical source: github.com/blueforest-studios/blueforest-branding
    Link (pinned — never @main for deployed pages):
-   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.0/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
+   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
    Pair with frame.js (player, filters, timecode, surface audit).
    Fonts: Saira (all text) — add JetBrains Mono only for code.
 
@@ -302,6 +302,18 @@ pre code{background:none;border:0;padding:0;color:inherit}
 figure{margin:0}figure:has(>.bfs-diagram){overflow-x:auto}
 @media(max-width:700px){.bfs-diagram{min-width:540px}} /* phones: scroll the diagram sideways rather than shrink its text below ~12px */
 figcaption{margin-top:.75rem;color:var(--bfs-muted);font-size:var(--bfs-t-sm)}
+/* ---- Read more (v4.4.1, rule 10): extra text folds away under the visual it explains.
+   <details class="bfs-more"><summary>Label · 2 min</summary><div class="bfs-prose">…</div></details> ---- */
+.bfs-more{border-block:1px solid var(--bfs-line);margin-top:var(--bfs-space-8)}
+.bfs-more+.bfs-more{margin-top:0;border-top:0}
+.bfs-more>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;font-weight:600;font-stretch:112.5%;font-size:var(--bfs-t-sm);letter-spacing:.04em;text-transform:uppercase;color:var(--bfs-text)}
+.bfs-more>summary::-webkit-details-marker{display:none}
+.bfs-more>summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(var(--bfs-accent),var(--bfs-accent)) center/100% 2px no-repeat,linear-gradient(var(--bfs-accent),var(--bfs-accent)) center/2px 100% no-repeat;transition:transform .2s}
+.bfs-more[open]>summary::after{transform:rotate(45deg)}
+.bfs-more>summary:hover{color:var(--bfs-accent)}
+.bfs-more>summary:focus-visible{outline:2px solid var(--bfs-blue);outline-offset:4px}
+.bfs-more>:not(summary){padding-bottom:var(--bfs-space-8);max-width:46rem}
+@media print{.bfs-more>:not(summary){display:block}}
 .bfs-split>*,.bfs-doc>*,.bfs-cta>*{min-width:0}   /* let tables scroll inside instead of widening the page */
 .bfs-split>div:first-child p{color:var(--bfs-muted);max-width:40ch}
 @media(max-width:900px){.bfs-split,.bfs-split-even{grid-template-columns:1fr}}
