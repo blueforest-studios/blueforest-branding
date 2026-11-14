@@ -1,24 +1,26 @@
 ---
 name: blueforest-branding
 description: |
-  Apply the BlueForest Studios design system v4 "Frame" (logo, Saira type, three-surface color system, viewfinder marks, action language, imagery, components, motion) to web pages, app interfaces, and video motion graphics. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects. ALSO use proactively — without being asked — whenever building any BlueForest-facing HTML deliverable: pitch/proposal sites, landing pages, the website, system-building plans and overview pages, internal tools, dashboards. If the page represents BlueForest Studios, this skill applies by default.
+  Apply the BlueForest Studios design system v5 "Glow" (logo, Poppins type, pill buttons, five section surfaces, the lit field, smooth scrolling and motion polish, rollover diagrams, action language, imagery) to marketing sites, system plans, consoles, and video motion graphics. Use when the user asks to 'brand it', 'apply BlueForest branding', mentions 'BlueForest style', 'BFS brand', 'our brand', or 'company branding' in the context of BlueForest projects. ALSO use proactively — without being asked — whenever building any BlueForest-facing HTML deliverable: the website, landing pages, pitch/proposal sites, system-building plans and overview pages, internal tools, dashboards, consoles. If the page represents BlueForest Studios, this skill applies by default.
 ---
 
-# BlueForest Studios Design System v4 "Frame"
+# BlueForest Studios Design System v5 "Glow"
 
-BlueForest Studios makes **video, websites, and marketing strategy** (three practices) from Raleigh, NC. The brand is seen through a camera: dark cinematic tops, bright working pages, viewfinder marks, and camera-display labels.
+BlueForest Studios makes **video, websites, and marketing strategy** from Raleigh, NC. The brand looks like blueforeststudios.com: Poppins, pill buttons, calm pale pages with blue, night and gray feature bands, and motion that feels finished. One unexpected thing: in the dark sections, a field of dots lights up under the pointer.
 
-> **Tagline:** "Integrated Video Production" is **retired** (2026-10-05). Never use it. A new tagline is TBD; until then the logo stands alone, and the landing-page header kicker names the practices: `Video · Web · Marketing strategy — Raleigh, NC`.
+> **Tagline:** "Integrated Video Production" is **retired** (2026-10-05). Never use it. Until a new one exists the logo stands alone.
 
-## Pick the page type first
+## Pick the spec first
+
+Three specs share one stylesheet. Each has its own template and rulebook.
 
 | Building… | Start from | Read |
 |---|---|---|
-| Client proposal / pitch site | `templates/pitch.html` | `references/pitch-sites.md` |
-| Landing page, website page, product/practice page | `templates/landing.html` | `references/landing-pages.md` |
-| System plan, project/campaign plan, overview page, weekly review | `templates/plan.html` | `references/planning-sites.md` |
+| Website page, landing page, product or practice page | `templates/landing.html` | `references/marketing-sites.md` |
+| System plan, project or campaign plan, overview page, creative brief, weekly review | `templates/plan.html` | `references/planning-sites.md` |
+| Console, dashboard, internal tool, app UI | `templates/console.html` | `references/consoles.md` |
 | Any page with photos | — | `references/imagery.md` (library first) |
-| App / dashboard / internal tool UI | — | `references/ui-design.md` (still v3 components; see "Legacy" below) |
+| Client proposal / pitch site | `templates/pitch.html` (still v4 "Frame", see Legacy) | `references/pitch-sites.md` |
 | Video motion graphics (logo stings, lower thirds) | — | `references/motion-graphics.md` |
 
 Copy the template, fill every `REPLACE`, and delete sections that don't apply. Don't rebuild structure from scratch.
@@ -26,136 +28,155 @@ Copy the template, fill every `REPLACE`, and delete sections that don't apply. D
 ## Stylesheet + runtime
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.2/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
-<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.2/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v5.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/glow.css">
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v5.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/glow.js"></script>
 ```
 
-- **Always pin the version tag** (`@v4.4.2`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
-- For self-contained single files, inline `assets/frame.css` and `assets/frame.js`.
-- Add `&family=JetBrains+Mono:wght@400;600` to the font URL only when the page contains code.
+- **Always pin the version tag** (`@v5.0.0`), never `@main`, so a later change can't restyle a deployed page.
+- Lenis (smooth scrolling) goes on marketing sites and plans. **Consoles don't load it.**
+- Add `&family=JetBrains+Mono:wght@400;500;600` to the font URL for plans and consoles (codes, figures in tables).
+- For self-contained single files, inline `assets/glow.css` and `assets/glow.js`.
+- Sites with their own build (the Astro website) take the tokens, components and runtime from these two files rather than linking the CDN.
 - Page-specific CSS builds on `--bfs-*` tokens. **No raw hex in page CSS.**
 
 ## The rules
 
-### 1 · Three surfaces
-Every top-level section carries exactly one: `.bfs-light` (white, the default and **always the largest share**), `.bfs-mid` (cool gray `#EBEDEF`, for section breaks), or `.bfs-dark` (near-black `#141112`).
-- **Dark starts the page** (nav + hero/title band) and closes it (footer). Use it in between only for a big title or image band on long pages. Never two dark sections in a row.
-- **Dark ≤ 25% of page height, and never on a copy-heavy section.** Dark is for titles and imagery.
-- Below the top, **alternate light ↔ mid** to mark chapters.
-- **No tan, beige, cream or warm-gray backgrounds** anywhere: not as a surface, a card, a callout or page CSS. Ammon flagged the old warm mid (`#E9E7E4`) as beige on 2026-11-14; v4.4 made it cool gray. Neutral whites and grays plus the dark surface are the whole palette for backgrounds.
-- Dark *images* may sit on light or mid sections (for example, the subtitle testimonial). Images don't count as surface.
-- Verify with `BFS.audit()` in the console, or drop `<div data-bfs-audit></div>` into a draft. It reports the light/mid/dark split and flags violations.
+### 1 · Five surfaces: two for reading, three for feature bands
+Every top-level section carries one surface class.
 
-### 2 · The header: one picture, three lines of text, centered
-Every page opens with `.bfs-cine` (all three templates do). Decided with Ammon 2026-10-19 after text-only, left-stacked headers kept crowding the top of pages.
-- **One image or graphic fills the header.** Source order is in `references/imagery.md` → "Header image": a frame from this project first. Never a placeholder, never text alone. Crop to the subject with `--focal` (`style="--focal:50% 12%"` keeps the top of the frame). The component sets the height (about half the viewport, 352–495px); don't resize it.
-- **Two or three text items:** the `h1` and one summary line (one plain sentence, 12 words or fewer). A kicker (`.bfs-hud`, 4 words or fewer) is optional: add it only when it says something the `h1` doesn't. **One button** by default; a second only on landing pages, and never one that just scrolls to the next section.
-- **Everything else goes in the corner readouts** (`.bfs-osd` `tl/tr/bl/br`): project code, date, client, owner, status. **Two by default, four at most**, a few words each. A readout that repeats the page (a video count beside the videos, a format the buttons already name) gets cut. They sit beside the viewfinder marks at 65% opacity. Wrap the tail of a long readout in `.bfs-m-hide` so phones show the short version.
-- **Centered by default.** Use `.bfs-cine-left` or `.bfs-cine-right` only when the subject sits on one side of the frame and centered type would cover it.
-- **Directly under the header, the content starts.** Never a summary band, never a row of two to four labeled text columns ("Who it's for · Why we build it · What's next"), never a stat row, whatever classes build it. Ammon retired the `.bfs-summary` band on 2026-11-14: it showed up on almost every page and only restated the header. Facts it used to hold go in the section they belong to (timeline and price in Investment, owner and next step in the closing block). Numbers stay in the section they describe. `BFS.audit()` warns on a header with no image and on any text-only band under it.
+| Class | Color | Use |
+|---|---|---|
+| `.bfs-s-pale` | `#F1F4F8` | Reading. Nav, hero, process, footer. |
+| `.bfs-s-white` | `#FFFFFF` | Reading. Cards, tables, long copy. |
+| `.bfs-s-night` | `#10171C` | Feature. Carries the lit field (rule 4): the intro or reel, and the close. |
+| `.bfs-s-blue` | `#009DDC` | Feature. **One headline and one white button, nothing else.** White body text on blue fails contrast. Once per page. |
+| `.bfs-s-slate` | `#4F5051` | Feature. Pictures: a stills row, a work grid, news. |
+
+- **Pale and white together cover at least half the page**, and they hold all copy longer than two sentences.
+- **Never two feature bands of the same color in a row.** A page uses each feature color at most twice.
+- Marketing pages open pale and close night then pale (footer). Plans use only the picture header plus white and pale. Consoles have no page surfaces.
+- **No tan, beige, cream or warm-gray backgrounds** anywhere.
+- `BFS.audit()` reports each surface's share and warns on every rule above.
+
+### 2 · The header carries one picture and three lines of text
+- **Marketing hero** (`.bfs-hero`, pale): on the left a kicker, a headline of ten words or fewer, one sentence, and at most two buttons. On the right one real frame in a rounded `.bfs-shot` that zooms slowly. The kicker states a fact (category and place); it is the only kicker on the page.
+- **Plan header** (`.bfs-phead`): one picture behind the name, one sentence of 12 words or fewer, and one quiet line of facts (`.bfs-meta`: status · date · what it waits on). Centered.
+- **Never a placeholder, never text alone.** Source order is in `references/imagery.md`. Crop with `--focal`.
+- **Directly under the header, the content starts.** No summary band, no row of labeled text columns, no stat row.
 
 ### 3 · Action language: a visitor always knows what a click does
 | Signal | Means | Markup |
 |---|---|---|
-| ▶ | Plays a video **in the on-page player** | `<button class="bfs-media bfs-vf" data-play data-src data-title [data-href]>` |
-| → | Opens **another page on our site** | `<a class="bfs-media bfs-vf" href>` / `.bfs-act` with the `bfs-arrow` icon |
-| ↗ | **Leaves our site** (text link only, new tab) | `.bfs-act` with the `bfs-ext` icon, `target="_blank" rel="noopener"` |
-- Clickable images show a **type tag** at all times (`.bfs-tag`: `▶ 2:14` / `Website` / `Strategy`) and a **hover pill** naming the action (`.bfs-pill`).
-- Every action is **repeated as a text link** (`.bfs-acts`) so it works on touch screens.
-- Websites always sit in `.bfs-browser` chrome.
-- The only playhead is the player's scrub bar. No auto-moving or hover-scrub mechanics.
-- `data-src` is an mp4/webm URL (native `<video>`) or an embed URL (Frame.io, YouTube, and so on, in an `<iframe>`). `frame.js` builds the player.
+| ▶ | Plays a video **in the on-page player** | `<button class="bfs-shot bfs-media" data-play data-src>` or `<button class="bfs-link" data-play data-src>` |
+| → | Opens **another page on our site** | `<a class="bfs-card">`, `.bfs-link`, or a button with `→` |
+| ↗ | **Leaves our site** (text link only, new tab) | `.bfs-link` with `↗`, `target="_blank" rel="noopener"` |
+- Clickable media shows a **tag** at all times (`.bfs-tag`: `▶ 2:14`) and a **pill** on hover naming the action (`.bfs-pill`).
+- Every media action is **repeated as a text link** nearby, so it works on touch screens.
+- `data-src` is an mp4/webm URL. `glow.js` builds the player (`BFS.play(src)`).
+- Things that are not links never look like links: rollover diagrams keep the arrow cursor (rule 7).
 
-### 4 · Viewfinder marks mean "this is the subject"
-`.bfs-vf` draws four corner marks. They **lock on** to clickable media on hover, frame the hero and featured films, and frame what matters (callouts, the form panel). Don't put them on every box; that cheapens them.
+### 4 · The lit field: the one unexpected element
+`<canvas data-field>` as the first child of a `.bfs-field.bfs-s-night` section draws a grid of dots. A light follows the pointer, brightening the dots near it and pushing them apart. With no pointer, the light drifts slowly on its own.
+- **Only in night sections, at most twice per page** (the intro and the close). Never behind long copy, never on consoles or plans.
+- It is the brand's single surprise. Don't add a second pointer effect to a page: no cursor trails, no tilt cards, no parallax.
+- Reduced-motion users get a still field.
 
-### 5 · Type: Saira, one family
-- Headings: weight 700, `font-stretch: 87.5%`, tight leading.
-- Body: 17px at 100% width.
-- HUD labels (`.bfs-hud`): 125% width, uppercase, tracked. Use them only where a camera would show data or a form would show a field label (timecodes, specs, status, metadata, section kickers). Never as decoration above every heading.
-- Numbers are always Saira (tabular). Mono is for code only.
-- Fluid scale: `--bfs-t-hud … --bfs-t-hero`. Never use fixed-px headings.
+### 5 · Motion: every page feels finished
+All of this ships in `glow.css` and `glow.js`. Use the attributes; don't hand-roll animation.
+- **Smooth scrolling** (Lenis, `lerp` 0.1) on marketing sites and plans.
+- **Reveal** `[data-rv]`: rises 28px while fading in, 0.9s/1.2s, `cubic-bezier(.22,1,.36,1)`, 90ms stagger within a batch. Put it on each heading, paragraph, card and figure, not on whole sections.
+- **Headline words** `[data-words]` on the `h1`: words rise out of a mask one after another.
+- **Nav** `[data-nav]`: shrinks and gains a hairline once the page moves.
+- **Hover**: cards lift 4px and their picture zooms to 1.04; link arrows slide 4px; the primary button leans toward the pointer (`[data-mag]`, one per section at most).
+- **Numbers** `[data-count]` count up once. **Diagram lines** (`.ln`) and the process line draw once.
+- **Easing is always `var(--ease)`.** Durations: hover 0.4–0.6s, reveals about 1s, nothing loops except the hero picture's slow zoom and the video halo.
+- `prefers-reduced-motion` turns all of it off. Never animate layout on consoles beyond the 0.35s view fade.
 
-### 6 · Color
+### 6 · Type, color, buttons, logo
+- **Poppins only.** Headlines 700 (`.bfs-h1`) and 600 (`.bfs-h2`, `.bfs-h3`) with tight tracking; body 400 at 1rem/1.6 in `--bfs-grey`. JetBrains Mono only for codes and figures in tables and consoles.
+- **Buttons are pills, uppercase, tracked** (`.bfs-btn` + `-blue`, `-line`, `-white`). **Buttons and status badges are the only pills.** Cards, pictures, tags and inputs use 16px, 12px and 8px corners.
+- Cards: white, 1px line, 16px corners, soft shadow (`.bfs-card`, `.bfs-panel`).
+
 | Token | Hex | Use |
 |---|---|---|
-| `--bfs-blue` | `#009DDC` | BlueForest Blue (Pantone 299): primary buttons, marks, list ticks, one highlighted word in a hero headline |
-| `--bfs-blue-text` | `#0077A8` | Blue for small text on light/mid (via `--bfs-accent`) |
-| `--bfs-black` | `#141112` | Dark surface |
-| `--bfs-ink` | `#231F20` | Brand dark: text on light, panels on dark |
-| `--bfs-bone` | `#ECE9E6` | Text on dark |
-| `--bfs-cool` | `#EBEDEF` | Mid surface (`--bfs-warm` is a deprecated alias for it) |
-| `--bfs-silver` / `--bfs-grey` | `#B6B8BA` / `#5E6468` | Muted text on dark / light |
-| `--bfs-tally` | `#DB3E26` | Brand red: **REC light, errors, and risks only.** Never a CTA, never decoration. |
+| `--bfs-blue` | `#009DDC` | Primary buttons, the blue band, lines in diagrams, meters |
+| `--bfs-blue-deep` | `#0088C2` | Hover on blue |
+| `--bfs-blue-text` | `#0077A8` | Blue text on pale and white (kicker, links) |
+| `--bfs-sky` | `#7FD0F0` | Blue text on night; the lit field |
+| `--bfs-ink` | `#231F20` | Text on pale and white |
+| `--bfs-grey` | `#5B666B` | Body and muted text on pale and white |
+| `--bfs-night` / `--bfs-slate` / `--bfs-pale` | `#10171C` / `#4F5051` / `#F1F4F8` | Surfaces (rule 1) |
+| `--bfs-line` | `#E4E9EE` | Borders and table rules |
+| `--bfs-red` | `#DB3E26` | **Errors and risks only.** Never a button, never decoration. |
 
-Cream and ice from v3, and the v4.0–4.3 warm gray, are retired. No warm-tinted backgrounds.
+- **Logo:** blue on pale and white, white on night, slate and blue. 56px tall in the nav (44px once it shrinks), 46px in the footer, 32px in a console top bar. Load it from `https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_blue.svg` (or `…_logo_white.svg`). Never distort, recolor or `filter:` it.
 
-### 7 · Logo
-- **Size:** 56px tall in the nav (46px under 560px wide), 46px in the footer. Those are frame.css defaults from v4.4; never shrink them in page CSS. Ammon found the older 42px nav logo 20–40% too small.
-- White variant on dark (nav, footer): `https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_white.svg`
-- Blue variant (`…_logo_blue.svg`) on light, only if a light nav is ever needed.
-- Never distort, recolor, or `filter:` the logo; keep ≥16px clear space. The SVGs are tightly cropped, so size them with `height`.
+### 7 · Diagrams answer the pointer
+Added 2026-11-14 from Ammon's note on the process graphic.
+- Any diagram with **three to seven named parts** (a process, a timeline, a parts list) uses `.bfs-flow`: rolling over a part lifts it onto a card, opens its dot into **one Lucide icon**, turns its title blue, and dims the other parts.
+- **Nothing is hidden at rest.** Every word is readable without the pointer, and the icon only repeats what the label says.
+- The cursor stays an arrow. A part that is also a link is a card (rule 3), not a flow stop.
+- Touch screens show every icon all the time (`@media (hover:none)`, built in).
+- One rollover diagram per page.
 
-### 8 · Page copy: plain sentences a client would say out loud
-Added 2026-10-20 after Ammon flagged header and intro text that read like a list of adjectives.
-- **Write complete sentences.** Every line has a subject and a verb. Write "Owners see a company they'd trust with their business", not "Warm, capable, trustworthy."
-- **Name the reader and the outcome.** Say who the page is for and what changes for them. Use "you" and the client's name; use "we" for BlueForest.
-- **Use concrete nouns and numbers:** the runtime, the date, the deliverable, the place. Cut words that could describe any company: *seamless, elevate, leverage, robust, cutting-edge, world-class, solutions, journey, unlock, empower*.
-- **Keep it short and active.** Header sentence 12 words or fewer. Summary lines 20 words or fewer. Section intros two sentences at most. No "not X, but Y" constructions, no rhetorical questions, no em-dash chains.
-- **Say each fact once.** If the header says it, the body expands on it rather than restating it.
-- **Check before shipping:** read the header line and each section intro aloud. If it sounds like a brochure, or a client couldn't repeat it to a colleague, rewrite it. Copy Ammon sends as himself (emails, posts) follows the `ammon-voice` skill instead.
+### 8 · Restraint: fewer elements, even spacing
+- **Text budget.** Each section gets one heading and at most one short intro sentence. **One kicker per page** (the hero's). Callouts, asides and fine print each need a reason a reader would miss them.
+- **One path per action.** No duplicate links to the same place, no second button that scrolls to the next section.
+- **Say it once, page-wide.** Before shipping, list every text element and cut what repeats, explains the obvious, or announces what's coming. Expect to delete about a third of a first draft.
+- **Matching padding.** Sections use the built-in `.bfs-section` padding; the space above a standalone block equals the space below it. Rows of cards align their links at the bottom (built in).
+- Dense, not airy: content sits in a 1200px `.bfs-wrap`; pictures in a row use 1rem gutters.
 
-### 9 · Restraint: fewer elements, more room, even spacing
-Added 2026-11-05 after three review rounds on a BlueGift page cut 25+ elements and widened the margins twice. The first draft of a page should already be the cut version.
-- **Text budget.** Each section gets one heading and at most one short intro sentence. **No `.bfs-hud` kicker above section headings** unless it carries data (a timecode, a status, a field label); a kicker that restates the heading ("How to use them" over "3 easy steps") is noise. Callouts, asides and fine print each need a reason a reader would miss them.
-- **One path per action.** Don't add a fallback link beside an embed that works (a "new tab" link under a booking widget), a second button that scrolls to the same place, or a nav link and a hero button and a footer link that all repeat one another on a short page.
-- **Say it once, page-wide.** Rule 8's "say each fact once" applies across the whole page: the header, section intros, callouts and closing block. Before shipping, list every text element and cut anything that repeats another, explains the obvious, or tells the reader what they're about to read. Expect to delete about a third of a first draft.
-- **Wide page margins.** The default gutter is `--bfs-pad: clamp(1.5rem, 9vw, 10rem)` (frame.css from v4.3.0). Never tighten it on reading pages. Body copy and notes sit in a centered column of at most ~46rem; closing and booking blocks at most ~62rem. Media grids keep their tight 6px gutters *inside* those margins: dense media, roomy page.
-- **Matching padding.** The space above an element equals the space below it, from the same token. When a block sits alone in a section (a note, a quote, a form), the gap from the section edge to the block equals the gap from the block to the next item; use the section padding value (`clamp(2.75rem,5.5vw,4.5rem)`) for both rather than mixing a section pad with a `--bfs-space-8` margin. Rows of cards align their buttons at the bottom (`display:flex; flex-direction:column` + `margin-top:auto`) so uneven copy never puts actions at two heights.
-- **Buttons look like buttons.** Primary actions on media cards (play, download) are `.bfs-btn` (outlined `.bfs-btn-line` for secondary), laid out in an even grid with one-line labels. `.bfs-act` text links are for inline secondary links only.
+### 9 · Pictures over paragraphs
+- **Every content section carries a visual** that does real work: a project frame or library still, a video tile, a `.bfs-flow` or `.bfs-diagram`, a chart, a table. Icons alone don't count.
+- **Turn structure into graphics.** Steps become a `.bfs-flow`; how parts connect becomes a `.bfs-diagram` (inline SVG: `.bx` boxes, one `.bx-on`, `.ln` lines); status becomes a `.bfs-checklist` with a meter; comparisons become a table.
+- **Text budget:** about 120 words per section (audit warns above 150) and 700 words for the page below the header.
+- **Picture share:** aim for pictures beside or behind 40% of the scroll below the header; the audit warns under 30%.
+- **More text goes in a collapsible**: `<details class="bfs-more"><summary>Topic · n min</summary><div>…</div></details>`, closed by default, under the visual it explains. Never fold away a decision, a price, a date or the next step.
 
-### 10 · Pictures over paragraphs
-Added 2026-11-14: Ammon finds pages consistently carry more text and fewer graphics and images than he wants. Show it, then label it.
-- **Every content section carries a visual** that does real work: a project frame or library still, a screenshot in `.bfs-browser`, an inline SVG diagram (flows, timelines, before/after, how the parts connect), a chart, a video tile, or a generated concept image (`references/imagery.md`). Icons and chips don't count.
-- **Turn structure into graphics.** A sequence of steps becomes a flow diagram; a comparison becomes a two-picture split or a table; a schedule becomes a timeline; a list of parts becomes a labeled diagram. Write the diagram in inline SVG with `--bfs-*` tokens (blue for the path, ink/grey for boxes and labels, Saira text), at least 320px tall on desktop.
-- **Text budget:** about 120 words per section (audit warns above 150) and 700 words for the whole page below the header (audit warns above). Captions and labels of 3–10 words beat paragraphs. Bullets are three to five short lines, not sentences joined by commas.
-- **Picture share:** aim for pictures beside or behind 40% of the scroll below the header; `BFS.audit()` reports `pictureShare` and warns under 30%. Prefer splits (`.bfs-split`: picture one side, short copy the other) and full-width image bands over stacked text sections.
-- **More text goes in a collapsible, never on the open page.** When a reader may want the detail (the reasoning behind a decision, a full source list, edge cases, the long version of a step), put it under the visual it explains in `<details class="bfs-more"><summary>Label · n min</summary><div class="bfs-prose">…</div></details>`, closed by default. The summary names what's inside in 2–5 words, not "Read more". Closed text doesn't count toward the word budget, and neither do labels inside figures, diagrams and mockups (the audit reads only visible copy), so the open page stays short and nothing is lost. Never fold away something every reader needs: the decision itself, a price, a date, the next step.
-- **Long source documents** (design docs, plans, specs) become the picture-level version: the decisions, the flow, the parts, what happens next, with the supporting detail in `.bfs-more` collapsibles. Link the full source `.md` or Doc once (footer) for anything beyond that.
+### 10 · Page copy: plain sentences with some character
+- **Write complete sentences** a client would say out loud. Name the reader and the outcome. Use "you" for them and "we" for BlueForest.
+- **Let a person speak.** One line per page may sound like Ammon ("I'm Ammon, the guy in the hard hat."). It must be true.
+- **Concrete nouns and numbers.** Cut words that could describe any company: *seamless, elevate, leverage, robust, cutting-edge, world-class, solutions, journey, unlock, empower*.
+- **Short and active.** Headline ten words or fewer, header sentence 12, section intros two sentences. No "not X, but Y", no rhetorical questions, no em-dash chains.
+- **Say each fact once.** If it isn't authentic, it doesn't go on the page. Copy Ammon sends as himself follows the `ammon-voice` skill.
 
 ## Component quick reference
-Layout `.bfs-wrap` `.bfs-section(-tight)` `.bfs-sh` `.bfs-split(-even)` `.bfs-grid(-2)` `.bfs-diagram` (`.bx` `.bx-on` `.ln` `text.sm`) `.bfs-more` (collapsible detail) `.bfs-doc` + `.bfs-toc` `.bfs-prose` ·
-Top `.bfs-nav` `.bfs-cine(-left/-right)` `.bfs-m-hide` `.bfs-frame` `.bfs-osd.tl/.tr/.bl/.br` `.bfs-rec` `[data-tc]` `.bfs-play` · (`.bfs-hero` `.bfs-hero-head`: the v4.0 split hero, kept only for pages already built with it) ·
-Media `.bfs-media` `.bfs-still` `.bfs-tag` `.bfs-pill` `.bfs-ttl` `.bfs-browser` `.bfs-reel` `.bfs-tile(.big/.wide/.full)` `.bfs-tabs[data-filter]` ·
-Content `.bfs-metabar` `.bfs-cols` `.bfs-ticks` `.bfs-price` `.bfs-pick` `.bfs-new` `.bfs-table` `.bfs-when` `.bfs-num` `.bfs-subtitle` `.bfs-logos` ·
-Planning `.bfs-stats` `.bfs-stat` (number-led pages only, never under the header) `.bfs-card` `.bfs-card-head` `.bfs-chip` `.bfs-st(-live/-done/-err)` `.bfs-callout(-warn)` `.bfs-checklist` ·
-Actions `.bfs-btn-blue` `.bfs-btn-ink` `.bfs-btn-line` `.bfs-act` `.bfs-acts` · Close `.bfs-cta` `.bfs-form` `.bfs-field` `.bfs-footer`
-Icons: `<svg class="bfs-icon"><use href="#bfs-play|bfs-arrow|bfs-ext"/></svg>` (sprite injected by frame.js). Other icons: inline Lucide (Iconify MCP, or `references/icons.md`).
+Layout `.bfs-wrap` `.bfs-section` `.bfs-head(.center)` `.bfs-split` `.bfs-two` `.bfs-cards` `.bfs-stills` ·
+Type `.bfs-kicker` `.bfs-h1` `.bfs-h2` `.bfs-h3` `.bfs-lede` ·
+Top `.bfs-nav[data-nav]` `.bfs-hero` `.bfs-hero-txt` `.bfs-phead` `.bfs-meta` ·
+Media `.bfs-shot` (`--focal`) `.bfs-media` `.bfs-tag` `.bfs-pill` `.bfs-field` + `canvas[data-field]` ·
+Content `.bfs-card` `.bfs-card-b` `.bfs-band` `.bfs-flow` (`.bfs-ico`, `--n`) `.bfs-diagram` (`.bx` `.bx-on` `.ln` `text.sm`) `.bfs-more` `.bfs-checklist` (`li.on`) `.bfs-prog` `.bfs-meter` (`--v`) `.bfs-callout(.risk)` `.bfs-table` (`.num`) `.bfs-table-scroll` `.bfs-panel` `.bfs-panel-h` `.bfs-panel-b` ·
+Status `.bfs-badge(.done/.live/.wait/.err)` `.bfs-code(.vid/.sys/.mkt)` `.bfs-delta(.bad)` ·
+Actions `.bfs-btn` `.bfs-btn-blue` `.bfs-btn-line` `.bfs-btn-white` `.bfs-btns` `.bfs-link` · Close `.bfs-cta` `.bfs-footer` ·
+Console `.bfs-con` `.bfs-con-top` `.bfs-con-side` `.bfs-con-main` `.bfs-con-h` `.bfs-seg` `.bfs-kpis` `.bfs-kpi` `.bfs-cols` `.bfs-chart` ·
+Attributes `data-rv` `data-words` `data-nav` `data-play` `data-src` `data-count` (`data-pre`, `data-suf`) `data-mag` `data-field` `data-no-lenis`
 
 ## Anti-patterns — never
 - ❌ "Integrated Video Production" anywhere.
-- ❌ Generic "AI design" tropes: soft serif headlines, an italic accent word in every heading, cream "paper" backgrounds, mono `01 —` eyebrows on every section, pill-shaped everything.
-- ❌ Cramped pages: thin side gutters, blocks crowding the edges, unequal space above and below a block. Frame is dense *inside* (6px image gutters, metadata in corner readouts, ruled columns instead of floating cards) and roomy *around* (wide page margins, rule 9).
-- ❌ Element pile-ups: a kicker over every heading, any summary band or labeled text columns under the header, a header with more than one line of text and two buttons, duplicate links to the same place, closing paragraphs that restate the page.
-- ❌ Text-only headers; a left-stacked eyebrow + headline + paragraph + chip row; a stat row or metadata bar directly under the header.
-- ❌ Ambiguous clickables: an image with no tag, no pill, or no text-link fallback; a video and a page link that look the same.
-- ❌ Text-heavy pages: sections of paragraphs with no picture, lists that should be a diagram, a design doc transcribed onto the page, long detail left open instead of folded into `.bfs-more` (rule 10).
-- ❌ Tan, beige, cream or warm-gray backgrounds; a nav logo smaller than 56px.
-- ❌ Dark sections holding long copy; dark above 25%; two dark sections in a row; mid larger than light.
-- ❌ Colored left/top border strips on cards; status shown as card color (use `.bfs-st`).
-- ❌ Red as a button or decoration. Gradients on buttons or surfaces (the only gradients are the legibility shades over images).
+- ❌ Camera props from v4: viewfinder corner marks, live timecode, a REC light, corner readouts, call-sheet styling. Ammon found them gimmicky (2026-11-14).
+- ❌ Generic "AI design" tropes: soft serif headlines, an italic accent word in every heading, cream "paper" backgrounds, mono `01 —` eyebrows, a small label over every heading, pills on things that aren't buttons or badges.
+- ❌ A second pointer effect next to the lit field; the lit field outside night sections; animation that loops for attention.
+- ❌ White paragraphs on the blue band; two feature bands of one color in a row; feature bands over half the page; long copy on night or slate.
+- ❌ Text-only headers; a summary band, labeled columns or a stat row under the header.
+- ❌ Ambiguous clickables: media with no tag, pill or text-link fallback; a rollover diagram that looks clickable.
+- ❌ Text-heavy pages: sections with no picture, lists that should be a diagram, long detail left open instead of folded into `.bfs-more`.
+- ❌ Colored left or top border strips on cards; status shown as card color (use `.bfs-badge`). Red as a button or decoration.
+- ❌ Tan, beige, cream or warm-gray backgrounds; a nav logo under 56px.
 - ❌ Raw hex in page CSS; `@main` stylesheet links on deployed pages; `filter` hacks on the logo.
-- ❌ Adjective-stack copy ("Warm, capable, trustworthy."), filler words from rule 8, the same fact repeated in header and body.
-- ❌ Shipping with `REPLACE` markers or `picsum.photos` placeholders.
+- ❌ Adjective-stack copy, filler words from rule 10, the same fact repeated in header and body.
+- ❌ Shipping with `REPLACE` markers or `picsum.photos` placeholders. Client imagery in this public repo.
 
 ## Workflow
-1. Pick the page type and read its reference.
+1. Pick the spec and read its reference.
 2. Copy the template; fill content; delete what doesn't apply.
-3. Imagery: real frames first, then the library, then client assets; generate with `scripts/imagegen.sh` (ChatGPT plan via Codex) only for concepts, moods and backgrounds (`references/imagery.md`).
-4. Do the rule 9 cut pass: list every text element and button, and delete repeats and extras before showing the page. Then the rule 10 pass: every section has a working visual, and anything that reads as a list or a sequence is a diagram.
-5. Serve over http:// and check in the browser: `BFS.audit()` passes with no warnings (no text band under the header, pictureShare ≥ 30 and ideally 40, words ≤ 700, no section over 150 words), the side gutters match rule 9, above/below spacing on standalone blocks measures equal (`getBoundingClientRect`, within 2px), card buttons line up, no horizontal scroll at 375px, hover states show tag, pill, and marks, header and section copy pass the rule 8 read-aloud check, and `grep -c REPLACE` returns 0.
+3. Imagery: real frames first, then the library, then client assets; generate with `scripts/imagegen.sh` only for concepts, moods and backgrounds (`references/imagery.md`).
+4. Do the rule 8 cut pass, then the rule 9 pass: every section has a working visual, and anything that reads as a list or sequence is a diagram.
+5. Serve over http:// and check in the browser: `BFS.audit()` returns `ok: true` with no warnings, no horizontal scroll at 375px, the lit field follows the pointer, the rollover diagram shows its icons, hover states show tag and pill, the copy passes a read-aloud check, and `grep -c REPLACE` returns 0.
 6. Reviewable pages embed the `?review` overlay (`~/.claude/rules/frontend.md`).
 
-## Legacy (v3)
-Pages built before 2026-10-05 link `assets/tokens.css` (and `ui.css` for apps), using Poppins, cream/ice, and pill buttons. **Leave them on v3 when editing**; don't mix v3 and v4 classes on one page. Migrate a page to v4 only when asked. App/dashboard UI still uses the v3 `ui.css` component layer until a v4 UI subset ships. v3 page rules are kept in `references/legacy/`.
+## Legacy
+- **v4 "Frame"** (2026-10-05 to 2026-11-14): pages linking `assets/frame.css` at a `@v4.x` tag (Saira, viewfinder marks). **Leave them on v4 when editing**; migrate one to v5 only when asked. Its templates and references are in `templates/legacy/` and `references/legacy/`.
+- **Pitch sites** still start from the v4 `templates/pitch.html` until a v5 pitch template ships. Don't mix v4 and v5 classes on one page.
+- **v3** (before 2026-10-05): `assets/tokens.css` + `assets/ui.css` at `@main` (Poppins, cream/ice). The Blair Console still inlines these; it moves to v5 only when asked. Rules in `references/legacy/`.

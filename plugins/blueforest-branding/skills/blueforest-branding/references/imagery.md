@@ -13,13 +13,13 @@ Never use generic stock imagery that pretends to be BlueForest's own work.
 
 ## Header image (every page)
 
-The `.bfs-cine` header always carries one image. First match wins:
+Every header carries one image: the marketing hero's `.bfs-shot` and the plan header's `.bfs-phead` (SKILL.md rule 2). First match wins:
 1. **A frame from this project:** footage (`ffmpeg -ss <t> -i <clip> -frames:v 1 -q:v 3 hero.jpg`), a style frame, a Remotion render, a screenshot of the system being planned. Log footage (C-Log, BRAW, S-Log) must go through a Rec.709 transform first; a flat grey frame is not usable.
 2. **A Stills Library frame** that matches the practice or industry.
 3. **A client asset** (product shot, location photo) the client has approved.
 4. **A generated image** when none of the above exists: a concept frame or an atmospheric background that fits the subject. Never text alone, never a placeholder.
 
-Pick a frame with the subject in the upper or middle third and room around it for centered type; set `--focal` so the crop keeps the subject. Export about 1600–2000px wide as JPG or WebP under ~400 KB, saved beside the page. Client frames stay in the client's project folder, never in this public repo.
+Pick a frame with the subject in the upper or middle third; for a plan header leave room around it for centered type. Set `--focal` so the crop keeps the subject. Export about 1600–2000px wide as JPG or WebP under ~400 KB, saved beside the page. Client frames stay in the client's project folder, never in this public repo.
 
 ## Generated images (ChatGPT plan via Codex)
 
@@ -32,13 +32,13 @@ Prompt like a cinematographer: the subject, the setting, the light (time of day,
 
 ## Library status
 
-Not yet populated. Until it is, use options 2 and 3 above and tell Ammon which slots still need real stills. When the library goes live, this section will hold the manifest URL and query examples.
+49 stills sit in `stills-library/library/` in the BlueForest Branding working folder (`manifest.json` has alt text, tags and focal points). They are local only and their rights are still "suggested", so use them for internal drafts and confirm with Ammon before any client-facing or public page. They are not hosted yet and never go in this public repo.
 
 ## Treatment
 
-- Crops: hero/feature frames `2.6:1` (`.bfs-frame`), tiles `16:10`, wide tiles `2.2:1`, portraits `4:5`. Use `object-fit: cover`. Never stretch.
-- The system applies a subtle grade (slight desaturation; darker on hover). Don't add other filters, duotones, or overlays except the `.bfs-shade` and `.bfs-ttl` gradients that keep text legible.
-- Text on images: only inside `.bfs-ttl`, `.bfs-osd`, `.bfs-line` (subtitles), or the hero frame. All of these already carry legibility shading.
+- Crops: hero frame about `4:4.4`, cards `16:10`, video tiles `16:9`, stills rows about `4:3`, plan headers full width. `object-fit: cover` and `--focal` are built into `.bfs-shot`. Never stretch.
+- No grade, duotone or overlay. The only shading is the plan header's built-in gradient that keeps its title legible.
+- Text on images: only the plan header's title block, `.bfs-tag` and `.bfs-pill`.
 - `alt` text describes what's in the frame ("Director framing an interview in a warehouse"). Purely decorative frames get `alt=""`.
-- Websites always appear inside `.bfs-browser` chrome. Videos always carry a `▶ runtime` tag.
+- Videos always carry a `▶ runtime` tag (`.bfs-tag`) and a hover pill (`.bfs-pill`).
 - People: prefer frames where faces are engaged, not mid-blink. Never use frames of minors without a release. If in doubt, choose a different frame.

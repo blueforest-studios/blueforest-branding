@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REPLACE: Console name · BlueForest Studios</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23009DDC'/%3E%3Cpath d='M5 22c4-9 18-9 22 0z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v5.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/glow.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v5.0.0/plugins/blueforest-branding/skills/blueforest-branding/assets/glow.js"></script>
+<style>/* Page-specific CSS only. Build on --bfs-* tokens, never raw hex. */
+.rv-zoom{display:none!important}
+</style>
+</head>
+<body>
+<!-- CONSOLE (dashboards, internal tools). Read references/consoles.md first. Follows the Blair Console.
+     No Lenis, no lit field, no page surfaces. Motion is small and fast: the view fades up, numbers count once, charts draw once.
+     Self-contained consoles (like Blair) inline glow.css and glow.js instead of linking them. Never put real business figures in a static file. -->
+<div class="bfs-con">
+  <header class="bfs-con-top">
+    <img src="https://raw.githubusercontent.com/blueforest-studios/blueforest-branding/main/plugins/blueforest-branding/skills/blueforest-branding/assets/BlueForestStudios_logo_blue.svg" alt="BlueForest Studios">
+    <div class="ttl"><b>REPLACE: Console name</b><small>REPLACE: One-line caption</small></div>
+    <span class="sp"></span>
+    <span class="fresh">REPLACE: Updated 2 min ago</span>
+    <span class="me" aria-label="REPLACE: Signed in as …">RE</span>
+  </header>
+
+  <!-- Sidebar: 17px Lucide icons (stroke 1.8) + a label. The current page is a tinted pill (aria-current), never a border.
+       Counts that need attention go in <i>. Group with <h2> labels when there are more than six links. -->
+  <nav class="bfs-con-side" aria-label="Console sections">
+    <a href="#" aria-current="page"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>REPLACE: Overview</a>
+    <a href="#"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>REPLACE: Section</a>
+    <a href="#"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>REPLACE: Section<i>3</i></a>
+    <h2>REPLACE: Group</h2>
+    <a href="#"><svg viewBox="0 0 24 24"><path d="M5 21V10M12 21V4M19 21v-7"/></svg>REPLACE: Section</a>
+  </nav>
+
+  <main class="bfs-con-main"><div>
+    <!-- One h1 per view, a one-line context under it, controls on the right. -->
+    <div class="bfs-con-h" data-cmt data-cmt-title="Page header">
+      <div><h1>REPLACE: View title</h1><p>REPLACE: Period or scope</p></div><span class="sp"></span>
+      <div class="bfs-seg" role="group" aria-label="Range"><button aria-pressed="true">Week</button><button aria-pressed="false">Month</button><button aria-pressed="false">Quarter</button></div>
+    </div>
+
+    <!-- KPI tiles: four at most. Label, value (data-count animates it once), then either a delta chip + context or a meter. -->
+    <div class="bfs-kpis" data-cmt data-cmt-title="KPI tiles">
+      <div class="bfs-kpi"><div class="lab">REPLACE: Metric</div><div class="val" data-count="0">0</div><div class="sub"><span class="bfs-delta">REPLACE +1</span>REPLACE: vs last week</div></div>
+      <div class="bfs-kpi"><div class="lab">REPLACE: Metric</div><div class="val" data-count="0" data-pre="$">$0</div><div class="sub"><span class="bfs-delta">REPLACE</span>REPLACE: context</div></div>
+      <div class="bfs-kpi"><div class="lab">REPLACE: Metric with a goal</div><div class="val" data-count="0">0</div><div class="bfs-meter"><i style="--v:0"></i></div></div>
+      <div class="bfs-kpi"><div class="lab">REPLACE: Metric</div><div class="val" data-count="0" data-pre="$">$0</div><div class="sub"><span class="bfs-delta bad">REPLACE: 2 overdue</span>REPLACE: context</div></div>
+    </div>
+
+    <div class="bfs-cols">
+      <!-- Charts are hand-written inline SVG: hairline axes, one blue line (2.5px), a dashed goal line, 11px labels. -->
+      <section class="bfs-panel" data-cmt data-cmt-title="Chart panel">
+        <div class="bfs-panel-h"><h3>REPLACE: Chart title</h3><small>REPLACE: Period · goal</small></div>
+        <div class="bfs-panel-b">
+          <svg class="bfs-chart" viewBox="0 0 600 216" role="img" aria-label="REPLACE: what the chart shows, with its range and goal">
+            <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#009DDC" stop-opacity=".22"/><stop offset="1" stop-color="#009DDC" stop-opacity="0"/></linearGradient></defs>
+            <path class="ax" d="M30 190H580M30 110H580M30 30H580"/>
+            <path class="goal" d="M30 62H580"/>
+            <text x="2" y="194">0</text><text x="2" y="114">REPLACE</text><text x="2" y="34">REPLACE</text>
+            <text x="30" y="210" text-anchor="middle">REPLACE</text><text x="569" y="210" text-anchor="middle">REPLACE</text>
+            <path class="ar" d="M30 102L177 66L324 46L471 70L569 64V190H30Z"/>
+            <path class="ln" pathLength="1" d="M30 102L177 66L324 46L471 70L569 64"/>
+            <circle cx="569" cy="64" r="4.5"/>
+          </svg>
+        </div>
+      </section>
+      <section class="bfs-panel" data-cmt data-cmt-title="Side panel">
+        <div class="bfs-panel-h"><h3>REPLACE: Panel title</h3><small>REPLACE</small></div>
+        <table class="bfs-table">
+          <tbody>
+            <tr><td>REPLACE: Measure<div class="bfs-meter"><i style="--v:0"></i></div></td><td class="num">0 / 0</td></tr>
+            <tr><td>REPLACE: Measure<div class="bfs-meter"><i style="--v:0"></i></div></td><td class="num">0 / 0</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Tables: numbers right-aligned in mono (.num), project codes as chips (.bfs-code vid|sys|mkt), status as badges. -->
+    <section class="bfs-panel" data-cmt data-cmt-title="Table">
+      <div class="bfs-panel-h"><h3>REPLACE: Table title</h3><small>REPLACE: count</small></div>
+      <div class="bfs-table-scroll"><table class="bfs-table">
+        <thead><tr><th>Code</th><th>REPLACE: Name</th><th>Stage</th><th class="num">REPLACE</th><th class="num">Due</th></tr></thead>
+        <tbody>
+          <tr><td><span class="bfs-code vid">VID-YYYY-NNN</span></td><td>REPLACE</td><td><span class="bfs-badge live">In post</span></td><td class="num">0.0</td><td class="num">REPLACE</td></tr>
+          <tr><td><span class="bfs-code sys">SYS-YYYY-NNN</span></td><td>REPLACE</td><td><span class="bfs-badge wait">Waiting on client</span></td><td class="num">0.0</td><td class="num">REPLACE</td></tr>
+          <tr><td><span class="bfs-code mkt">MKT-YYYY-NNN</span></td><td>REPLACE</td><td><span class="bfs-badge err">Blocked</span></td><td class="num">0.0</td><td class="num">REPLACE</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+  </div></main>
+</div>
+<!-- ?review overlay (~/.claude/rules/frontend.md): paste ~/.claude/skills/overview-site/templates/review_overlay_system.html here, set PREFIX/TITLE. -->
+</body>
+</html>

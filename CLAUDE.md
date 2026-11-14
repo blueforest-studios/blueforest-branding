@@ -21,6 +21,12 @@ claude plugin update blueforest-branding@blueforest-branding
 - Dashboard icon: swatch fan deck, `blueforest-icons/blueforest-branding.svg` (family style: black outline, one `#009FE0` accent).
 - Blair is the system of record for the project registration; the System Building Dashboard row mirrors it.
 
+## v5 "Glow" (2026-11-14) — current
+Ammon picked option A "Glow" from the v5 mockups (`../brand-refresh-2026/v5/`): the brand follows blueforeststudios.com (Poppins, uppercase pill buttons, pale/white reading surfaces with night, blue and slate feature bands) plus motion polish and one unexpected element, the lit field. Camera motifs and Saira are retired. Ships as **new files**: `assets/glow.css`, `assets/glow.js`, `templates/{landing,plan,console}.html`, `references/{marketing-sites,planning-sites,consoles}.md`. v5 links are **pinned to `@v5.0.0`**: bump the tag in SKILL.md, the three templates, README and the `overview-site` skill on every release. Three specs: marketing sites, system plans, consoles (consoles follow the Blair Console). New rule 7 "diagrams answer the pointer" (`.bfs-flow`). `BFS.audit()` now checks the five-surface balance (pale + white ≥ 50%), the header picture, kickers, words and picture share.
+- v4 templates and references moved to `templates/legacy/` and `references/legacy/`; `frame.css`/`frame.js` are untouched so `@v4.x` pages keep working. **Pitch sites still use the v4 `templates/pitch.html`**: a v5 pitch template is the next piece.
+- `glow.css` was generated once from the approved mockups by a migration script (class names got the `bfs-` prefix). Edit `glow.css` directly from here on. Local previews on the shipped files: `../brand-refresh-2026/v5-preview/`.
+- Blair's Console still inlines v3; moving it to the v5 console classes is a separate job.
+
 ## v4 "Frame" (2026-10-05)
 Chosen from the brand-refresh rounds (`../brand-refresh-2026/`, direction C2). Ships as **new files** (`assets/frame.css`, `assets/frame.js`, `templates/{pitch,landing,plan}.html`, `references/{pitch-sites,landing-pages,planning-sites,imagery}.md`). v3 `tokens.css`/`ui.css` are untouched because ~22 existing pages link them via `@main`. v4 links are **pinned to `@v4.4.2`**: bump the tag (and SKILL.md/templates/README URLs) on every release. The "Integrated Video Production" tagline is retired. The stills library is a separate effort; client imagery must **never** enter this public repo.
 

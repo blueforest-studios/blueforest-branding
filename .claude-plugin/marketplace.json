@@ -1,6 +1,6 @@
 {
   "name": "blueforest-branding",
-  "description": "BlueForest Studios design system v4 \"Frame\" \u2014 templates, stylesheet, runtime, imagery and motion rules",
+  "description": "BlueForest Studios design system v5 \"Glow\" — templates, stylesheet, runtime, imagery and motion rules",
   "owner": {
     "name": "BlueForest Studios",
     "email": "ammon@blueforeststudios.com"
@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "blueforest-branding",
-      "description": "Apply the BlueForest Studios design system v4 \"Frame\" (Saira type, three-surface color system, viewfinder marks, action language, page templates for pitch/landing/planning sites, imagery, motion) to web pages, app interfaces, and video motion graphics",
-      "version": "4.4.2",
+      "description": "Apply the BlueForest Studios design system v5 \"Glow\" (Poppins, pill buttons, five section surfaces, the lit field, smooth scrolling and motion, rollover diagrams, templates for marketing sites, system plans and consoles, imagery) to web pages, app interfaces, and video motion graphics",
+      "version": "5.0.0",
       "author": {
         "name": "BlueForest Studios",
         "email": "ammon@blueforeststudios.com"
