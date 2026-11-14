@@ -2,7 +2,7 @@
    BlueForest Studios — Design System v4 "Frame"
    Canonical source: github.com/blueforest-studios/blueforest-branding
    Link (pinned — never @main for deployed pages):
-   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
+   https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.2/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css
    Pair with frame.js (player, filters, timecode, surface audit).
    Fonts: Saira (all text) — add JetBrains Mono only for code.
 
@@ -302,7 +302,7 @@ pre code{background:none;border:0;padding:0;color:inherit}
 figure{margin:0}figure:has(>.bfs-diagram){overflow-x:auto}
 @media(max-width:700px){.bfs-diagram{min-width:540px}} /* phones: scroll the diagram sideways rather than shrink its text below ~12px */
 figcaption{margin-top:.75rem;color:var(--bfs-muted);font-size:var(--bfs-t-sm)}
-/* ---- Read more (v4.4.1, rule 10): extra text folds away under the visual it explains.
+/* ---- Read more (v4.4.2, rule 10): extra text folds away under the visual it explains.
    <details class="bfs-more"><summary>Label · 2 min</summary><div class="bfs-prose">…</div></details> ---- */
 .bfs-more{border-block:1px solid var(--bfs-line);margin-top:var(--bfs-space-8)}
 .bfs-more+.bfs-more{margin-top:0;border-top:0}

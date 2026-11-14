@@ -130,7 +130,15 @@
       (next.offsetHeight < innerHeight * 0.5 && ![].some.call(next.querySelectorAll(VIS), isVis))));
     // v4.4 text budget + picture share, measured on the content between header and footer
     var body = tops.slice(1).filter(function (el) { return !el.classList.contains('bfs-footer') && el.tagName !== 'FOOTER'; });
-    var words = function (el) { return (el.innerText.match(/\S+/g) || []).length; };
+    // Visible words only: closed .bfs-more text isn't rendered, and labels inside figures, diagrams and media are pictures, not copy
+    var count = function (s) { return ((s || '').match(/\S+/g) || []).length; };
+    var words = function (el) {
+      var n = count(el.innerText);
+      [].forEach.call(el.querySelectorAll('figure,.bfs-media,svg:not(.bfs-icon)'), function (f) {
+        if (!f.parentElement.closest('figure,.bfs-media,svg')) n -= count(f.innerText !== undefined ? f.innerText : f.textContent);
+      });
+      return Math.max(n, 0);
+    };
     r.words = body.reduce(function (n, el) { return n + words(el); }, 0);
     r.wordySections = body.filter(function (el) { return words(el) > 150; }).map(function (el) { return (el.querySelector('h2,h3') || el).innerText.slice(0, 40); });
     var spans = [], h = 0, y0 = scrollY;

@@ -27,11 +27,11 @@ Copy the template, fill every `REPLACE`, and delete sections that don't apply. D
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
-<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.1/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.2/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/blueforest-studios/blueforest-branding@v4.4.2/plugins/blueforest-branding/skills/blueforest-branding/assets/frame.js"></script>
 ```
 
-- **Always pin the version tag** (`@v4.4.1`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
+- **Always pin the version tag** (`@v4.4.2`), never `@main`, so a later design change can't silently restyle a page that's already deployed.
 - For self-contained single files, inline `assets/frame.css` and `assets/frame.js`.
 - Add `&family=JetBrains+Mono:wght@400;600` to the font URL only when the page contains code.
 - Page-specific CSS builds on `--bfs-*` tokens. **No raw hex in page CSS.**
@@ -121,7 +121,7 @@ Added 2026-11-14: Ammon finds pages consistently carry more text and fewer graph
 - **Turn structure into graphics.** A sequence of steps becomes a flow diagram; a comparison becomes a two-picture split or a table; a schedule becomes a timeline; a list of parts becomes a labeled diagram. Write the diagram in inline SVG with `--bfs-*` tokens (blue for the path, ink/grey for boxes and labels, Saira text), at least 320px tall on desktop.
 - **Text budget:** about 120 words per section (audit warns above 150) and 700 words for the whole page below the header (audit warns above). Captions and labels of 3–10 words beat paragraphs. Bullets are three to five short lines, not sentences joined by commas.
 - **Picture share:** aim for pictures beside or behind 40% of the scroll below the header; `BFS.audit()` reports `pictureShare` and warns under 30%. Prefer splits (`.bfs-split`: picture one side, short copy the other) and full-width image bands over stacked text sections.
-- **More text goes in a collapsible, never on the open page.** When a reader may want the detail (the reasoning behind a decision, a full source list, edge cases, the long version of a step), put it under the visual it explains in `<details class="bfs-more"><summary>Label · n min</summary><div class="bfs-prose">…</div></details>`, closed by default. The summary names what's inside in 2–5 words, not "Read more". Closed text doesn't count toward the word budget (the audit reads only what's visible), so the open page stays short and nothing is lost. Never fold away something every reader needs: the decision itself, a price, a date, the next step.
+- **More text goes in a collapsible, never on the open page.** When a reader may want the detail (the reasoning behind a decision, a full source list, edge cases, the long version of a step), put it under the visual it explains in `<details class="bfs-more"><summary>Label · n min</summary><div class="bfs-prose">…</div></details>`, closed by default. The summary names what's inside in 2–5 words, not "Read more". Closed text doesn't count toward the word budget, and neither do labels inside figures, diagrams and mockups (the audit reads only visible copy), so the open page stays short and nothing is lost. Never fold away something every reader needs: the decision itself, a price, a date, the next step.
 - **Long source documents** (design docs, plans, specs) become the picture-level version: the decisions, the flow, the parts, what happens next, with the supporting detail in `.bfs-more` collapsibles. Link the full source `.md` or Doc once (footer) for anything beyond that.
 
 ## Component quick reference
